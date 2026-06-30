@@ -3,6 +3,7 @@ import Trust from "@/components/home/Trust";
 import FeaturedGallery from "@/components/home/FeaturedGallery";
 import About from "@/components/home/About";
 import BeforeAfter from "@/components/home/BeforeAfter";
+import Services from "@/components/home/Services";
 export default function Home() {
   return (
     <main>
@@ -10,6 +11,7 @@ export default function Home() {
       <Trust />
       <FeaturedGallery />
       <About />
+      <Services />
       <BeforeAfter />
     </main>
   );
