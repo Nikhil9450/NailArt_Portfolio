@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionProps {
   children: ReactNode;
@@ -7,10 +8,15 @@ interface SectionProps {
 
 export default function Section({
   children,
-  className = "",
+  className,
 }: SectionProps) {
   return (
-    <section className={`py-20 ${className}`}>
+    <section
+      className={cn(
+        "py-20 md:py-28 lg:py-32",
+        className
+      )}
+    >
       {children}
     </section>
   );
