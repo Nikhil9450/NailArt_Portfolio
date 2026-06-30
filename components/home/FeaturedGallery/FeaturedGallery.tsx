@@ -34,7 +34,7 @@ const filteredGallery = useMemo(() => {
   
 
   return (
-    <Section>
+    <Section id="gallery">
       <Container>
         <motion.div
         initial={{

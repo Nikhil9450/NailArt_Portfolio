@@ -5,7 +5,7 @@ import ServiceGrid from "./ServiceGrid";
 
 export default function Services() {
   return (
-    <Section className="bg-[#FFF8F5]">
+    <Section className="bg-[#FFF8F5]" id="services">
       <Container>
         <SectionHeading
           badge="Premium Services"

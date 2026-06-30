@@ -5,7 +5,7 @@ import TestimonialSlider from "./TestimonialSlider";
 
 export default function Testimonials() {
   return (
-    <Section>
+    <Section id="testimonials">
       <Container>
         <SectionHeading
           badge="Testimonials"
