@@ -1,14 +1,37 @@
 "use client";
 
 import { Booking } from "@/types/booking";
-import { updateBookingStatus } from "@/lib/api/booking";
+import { Pencil, Trash2 } from "lucide-react";
+import {
+  updateBookingStatus,
+  deleteBooking,
+} from "@/lib/api/booking";
+
 interface BookingTableProps {
-    bookings: Booking[];
+  bookings: Booking[];
+  onEdit: (booking: Booking) => void;
 }
 
 export default function BookingTable({
-    bookings,
+  bookings,
+  onEdit,
 }: BookingTableProps) {
+
+      const handleDelete = async (id: string) => {
+      const confirmed = window.confirm(
+        "Delete this booking?"
+      );
+
+      if (!confirmed) return;
+
+      try {
+        await deleteBooking(id);
+
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
     const handleStatusChange = async (
     id: string,
@@ -46,7 +69,7 @@ export default function BookingTable({
             {bookings.length === 0 ? (
               <tr>
                 <td
-                  colSpan={6}
+                  colSpan={7}
                   className="p-8 text-center text-gray-500"
                 >
                   No bookings found.
@@ -95,18 +118,36 @@ export default function BookingTable({
                     </td>
                     
                     <td className="p-4">
-                    <select
-                        value={booking.status}
-                        onChange={(e) =>
-                        handleStatusChange(booking._id, e.target.value)
-                        }
-                        className="rounded-lg border px-3 py-2"
-                    >
-                        <option value="Pending">Pending</option>
-                        <option value="Confirmed">Confirmed</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Cancelled">Cancelled</option>
-                    </select>
+                      <div className="flex items-center gap-3">
+                        <select
+                          value={booking.status}
+                          onChange={(e) =>
+                            handleStatusChange(booking._id, e.target.value)
+                          }
+                          className="rounded-lg border px-3 py-2"
+                        >
+                          <option value="Pending">Pending</option>
+                          <option value="Confirmed">Confirmed</option>
+                          <option value="Completed">Completed</option>
+                          <option value="Cancelled">Cancelled</option>
+                        </select>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => onEdit(booking)}
+                            className="rounded-lg p-2 text-blue-600 hover:bg-blue-100"
+                          >
+                            <Pencil size={18} />
+                          </button>
+
+                          <button
+                            onClick={() => handleDelete(booking._id)}
+                            className="rounded-lg p-2 text-red-600 hover:bg-red-100"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
+                      </div>
                     </td>
                 </tr>
               ))

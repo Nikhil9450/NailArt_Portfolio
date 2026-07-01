@@ -1,12 +1,21 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
 
 export default function DashboardHeader() {
-  const today = new Date().toLocaleDateString("en-IN", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const [today, setToday] = useState("");
+
+  useEffect(() => {
+    setToday(
+      new Intl.DateTimeFormat("en-IN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(new Date())
+    );
+  }, []);
 
   return (
     <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-center">

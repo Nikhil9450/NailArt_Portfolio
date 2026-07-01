@@ -10,10 +10,14 @@ import SearchBar from "./SearchBar";
 import { Booking } from "@/types/booking";
 import { getBookings } from "@/lib/api/booking";
 import StatusFilter from "./StatusFilter";
+import EditBookingDialog from "./EditBookingDialog";
+import RevenueChart from "./charts/RevenueChart";
 export default function Dashboard() {
     const [bookings, setBookings] = useState<Booking[]>([]);
     const [search, setSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState("All");
+    const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+    const [editOpen, setEditOpen] = useState(false);
   useEffect(() => {
     getBookings().then(setBookings);
   }, []);
@@ -32,7 +36,57 @@ export default function Dashboard() {
 
   return matchesSearch && matchesStatus;
 });
+const handleEdit = (booking: Booking) => {
+  setSelectedBooking(booking);
+  setEditOpen(true);
+};
+// const revenueData = [
+//   {
+//     month: "Jan",
+//     revenue: 12000,
+//   },
+//   {
+//     month: "Feb",
+//     revenue: 18000,
+//   },
+//   {
+//     month: "Mar",
+//     revenue: 15000,
+//   },
+//   {
+//     month: "Apr",
+//     revenue: 25000,
+//   },
+//   {
+//     month: "May",
+//     revenue: 22000,
+//   },
+//   {
+//     month: "Jun",
+//     revenue: 30000,
+//   },
+// ];
+const revenueData = Array.from({ length: 12 }, (_, index) => {
+  const month = new Date(2026, index).toLocaleString("en-US", {
+    month: "short",
+  });
 
+  const revenue = bookings
+    .filter((booking) => {
+      const bookingDate = new Date(booking.date);
+
+      return (
+        booking.status === "Completed" &&
+        bookingDate.getMonth() === index
+      );
+    })
+    .reduce((sum, booking) => sum + booking.price, 0);
+
+  return {
+    month,
+    revenue,
+  };
+});
   return (
     <main className="min-h-screen bg-gray-100 py-10">
         <Container>
@@ -52,7 +106,18 @@ export default function Dashboard() {
                 onChange={setStatusFilter}
             />
             </div>
-            <BookingTable bookings={filteredBookings} />      
+            <BookingTable
+              bookings={filteredBookings}
+              onEdit={handleEdit}
+            />
+            <RevenueChart
+              data={revenueData}
+            />
+            <EditBookingDialog
+                open={editOpen}
+                onOpenChange={setEditOpen}
+                booking={selectedBooking}
+              />
         </Container>
     </main>
   );
