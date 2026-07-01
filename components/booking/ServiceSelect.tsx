@@ -1,6 +1,13 @@
 "use client";
 
 import { Service } from "@/types/service";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ServiceSelectProps {
   services: Service[];
@@ -19,19 +26,25 @@ export default function ServiceSelect({
         Select Service
       </label>
 
-      <select
+      <Select
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+        onValueChange={onChange}
       >
-        <option value="">Choose a Service</option>
+        <SelectTrigger className="w-full rounded-xl">
+          <SelectValue placeholder="Choose a Service" />
+        </SelectTrigger>
 
-        {services.map((service) => (
-          <option key={service.id} value={service.title}>
-            {service.title} — ₹{service.price}
-          </option>
-        ))}
-      </select>
+        <SelectContent>
+          {services.map((service) => (
+            <SelectItem
+              key={service.id}
+              value={service.title}
+            >
+              {service.title} • ₹{service.price}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }
