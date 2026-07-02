@@ -1,7 +1,8 @@
-export interface GalleryItem {
-  id: number;
+export interface Gallery {
+  _id: string;
   title: string;
-  category: string;
   image: string;
-  height: number;
+  category: string;
+  createdAt: string;
+  updatedAt: string;
 }

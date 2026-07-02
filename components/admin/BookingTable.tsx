@@ -48,7 +48,7 @@ export default function BookingTable({
   return (
     <div className="rounded-3xl bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-2xl font-bold">
-        Recent Bookings
+        All Bookings
       </h2>
 
       <div className="overflow-x-auto">
