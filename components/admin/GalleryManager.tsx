@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import AddGalleryDialog from "./gallery/AddGalleryDialog";
 import Container from "@/components/layout/Container";
 import GalleryTable from "./gallery/GalleryTable";
-
+import EditGalleryDialog from "./gallery/EditGalleryDialog";
 import { getGallery } from "@/lib/api/gallery";
 import { Gallery } from "@/types/gallery";
+import DeleteGalleryDialog from "./gallery/DeleteGalleryDialog";
 
 export default function GalleryManager() {
   const [images, setImages] = useState<Gallery[]>([]);
   const [selectedImage, setSelectedImage] =
     useState<Gallery | null>(null);
-
+  const [deleteOpen, setDeleteOpen] =
+    useState(false);
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
@@ -34,12 +36,10 @@ export default function GalleryManager() {
     setEditOpen(true);
   };
 
-  const handleDelete = (image: Gallery) => {
-    setSelectedImage(image);
-
-    // Delete dialog will be added later
-    console.log("Delete:", image);
-  };
+const handleDelete = (image: Gallery) => {
+  setSelectedImage(image);
+  setDeleteOpen(true);
+};
 
   return (
     <main className="min-h-screen bg-gray-100 py-10">
@@ -70,28 +70,11 @@ export default function GalleryManager() {
         />
 
         {/* Add Gallery Dialog */}
-        {addOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-              <h2 className="mb-4 text-2xl font-bold">
-                Add Gallery Image
-              </h2>
-
-              <p className="text-gray-500">
-                Dialog coming in the next step...
-              </p>
-
-              <div className="mt-6 flex justify-end">
-                <button
-                  onClick={() => setAddOpen(false)}
-                  className="rounded-lg bg-gray-200 px-4 py-2 hover:bg-gray-300"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        <AddGalleryDialog
+          open={addOpen}
+          onClose={() => setAddOpen(false)}
+          onSuccess={loadGallery}
+        />
 
         {/* Edit Gallery Dialog */}
         {editOpen && selectedImage && (
@@ -116,6 +99,18 @@ export default function GalleryManager() {
             </div>
           </div>
         )}
+        <EditGalleryDialog
+          open={editOpen}
+          onClose={() => setEditOpen(false)}
+          onSuccess={loadGallery}
+          image={selectedImage}
+        />
+        <DeleteGalleryDialog
+          open={deleteOpen}
+          image={selectedImage}
+          onClose={() => setDeleteOpen(false)}
+          onSuccess={loadGallery}
+        />
       </Container>
     </main>
   );

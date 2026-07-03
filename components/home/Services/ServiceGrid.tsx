@@ -1,12 +1,15 @@
 import ServiceCard from "@/components/cards/ServiceCard";
-import { services } from "@/data/services";
+import { getServicesFromDB } from "@/lib/server/services";
+import { Service } from "@/types/service";
 
-export default function ServiceGrid() {
+export default async function ServiceGrid() {
+  const services = await getServicesFromDB();
+
   return (
     <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
+      {services.map((service: Service) => (
         <ServiceCard
-          key={service.id}
+          key={service._id}
           service={service}
         />
       ))}

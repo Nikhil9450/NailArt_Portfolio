@@ -1,10 +1,21 @@
 export interface Service {
-  id: number;
+  _id: string;
+
   title: string;
+
   description: string;
+
   image: string;
+
   price: number;
+
   duration: string;
-  rating: number;
+
   category: string;
+
+  rating: number;
+
+  createdAt: string;
+
+  updatedAt: string;
 }

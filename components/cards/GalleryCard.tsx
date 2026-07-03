@@ -30,7 +30,9 @@ export default function GalleryCard({
 >
 <div
   className="relative w-full overflow-hidden rounded-3xl"
-  style={{ height: `${item.height}px` }}
+  style={{
+    height: `${item.height ?? 320}px`,
+  }}
 >
   <Image
     src={item.image}

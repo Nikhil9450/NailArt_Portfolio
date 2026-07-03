@@ -1,3 +1,5 @@
+import ServicesManager from "@/components/admin/ServicesManager";
+
 export default function ServicesPage() {
-  return <h1 className="text-3xl font-bold">Services</h1>;
+  return <ServicesManager />;
 }
