@@ -9,12 +9,13 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import { createService } from "@/lib/api/service";
+import { validateImage } from "@/lib/imageValidation";
 
 interface AddServiceDialogProps {
   open: boolean;
@@ -40,7 +41,7 @@ export default function AddServiceDialog({
 
   const handleSubmit = async () => {
     if (!file) {
-      alert("Please select an image.");
+      toast.error("Please select an image.");
       return;
     }
 
@@ -85,7 +86,7 @@ export default function AddServiceDialog({
       setFile(null);
     } catch (error) {
       console.error(error);
-      alert("Failed to create service.");
+      toast.error("Failed to create service.");
     } finally {
       setLoading(false);
     }
@@ -96,7 +97,7 @@ export default function AddServiceDialog({
       open={open}
       onOpenChange={onOpenChange}
     >
-      <DialogContent className="max-w-xl">
+      <DialogContent className="w-[95vw] max-w-xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add Service</DialogTitle>
         </DialogHeader>
@@ -156,10 +157,16 @@ export default function AddServiceDialog({
           <Input
             type="file"
             accept="image/*"
-            onChange={(e) =>
-              setFile(
+            onChange={(e) =>   
+           {  
+            if (!validateImage(e.target.files?.[0] ?? null)) {
+                e.target.value = "";
+                return;
+            }
+            setFile(
                 e.target.files?.[0] ?? null
               )
+            }
             }
           />
 

@@ -26,7 +26,7 @@ export default function DeleteGalleryDialog({
       onClose();
     } catch (error) {
       console.error(error);
-      alert("Failed to delete image");
+      toast.error("Failed to delete image");
     }
   };
 

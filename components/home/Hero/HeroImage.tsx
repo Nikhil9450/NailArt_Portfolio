@@ -4,8 +4,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import FloatingCard from "@/components/common/FloatingCard";
 import { Star, Users } from "lucide-react";
+import { Settings } from "@/types/settings";
 
-export default function HeroImage() {
+interface HeroImageProps {
+  settings: Settings;
+}
+
+export default function HeroImage({
+  settings,
+}: HeroImageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 60 }}
@@ -17,7 +24,7 @@ export default function HeroImage() {
       <div className="absolute -z-10 h-96 w-96 rounded-full bg-pink-200/30 blur-3xl" />
 
       <Image
-        src="/images/hero/hero.png"
+        src={settings.heroImage || "/images/hero/hero.png"}
         alt="Luxury Nail Art"
         width={500}
         height={650}

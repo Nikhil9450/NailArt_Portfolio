@@ -1,10 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { Settings } from "@/types/settings";
 
+interface AboutContentProps {
+  settings: Settings;
+}
 const features = [
   "Certified Nail Technician",
   "Premium Quality Products",
@@ -12,7 +16,9 @@ const features = [
   "100% Hygienic Workspace",
 ];
 
-export default function AboutContent() {
+export default function AboutContent({
+  settings,
+}: AboutContentProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 60 }}
@@ -28,13 +34,12 @@ export default function AboutContent() {
 </span>
 
       <h2 className="mt-6 font-serif text-5xl font-bold">
-        Luxury Nail Artist
+        {settings.aboutTitle || "Luxury Nail Artist"}
       </h2>
 
       <p className="mt-6 text-lg leading-8 text-gray-600">
-        Creating elegant nail designs that enhance confidence
-        and beauty. Every client receives personalized attention
-        and premium-quality nail care.
+      {settings.aboutDescription ||
+        "Creating elegant nail designs that enhance confidence and beauty. Every client receives personalized attention and premium-quality nail care."}
       </p>
 
       <div className="mt-8 space-y-4">

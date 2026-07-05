@@ -90,7 +90,9 @@ const onSubmit = async (data: BookingSchema) => {
 };
   return (
     <Container>
-      <div className="mx-auto mt-16 grid max-w-6xl gap-10 lg:grid-cols-3">
+      <div className="mx-auto mt-16 grid max-w-6xl gap-10 lg:grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-3">
 
         {/* LEFT */}
         <form

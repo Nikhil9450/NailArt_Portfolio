@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Container from "@/components/layout/Container";
-import DashboardHeader from "./DashboardHeader";
+// import DashboardHeader from "./DashboardHeader";
 import StatsCards from "./StatsCard";
 import RecentBookings from "./RecentBookings";
 import RevenueChart from "./charts/RevenueChart";
@@ -41,9 +41,9 @@ export default function Dashboard() {
   });
 
   return (
-    <main className="min-h-screen bg-gray-100 py-10">
+    <div className="space-y-8">
       <Container>
-        <DashboardHeader />
+        {/* <DashboardHeader /> */}
 
         <StatsCards bookings={bookings} />
 
@@ -51,6 +51,6 @@ export default function Dashboard() {
 
         <RevenueChart data={revenueData} />
       </Container>
-    </main>
+    </div>
   );
 }

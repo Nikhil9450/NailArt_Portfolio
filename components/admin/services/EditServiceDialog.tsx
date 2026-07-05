@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -100,7 +100,7 @@ export default function EditServiceDialog({
       onOpenChange(false);
     } catch (error) {
       console.error(error);
-      alert("Failed to update service.");
+      toast.error("Failed to update service.");
     } finally {
       setLoading(false);
     }
@@ -113,7 +113,7 @@ export default function EditServiceDialog({
       open={open}
       onOpenChange={onOpenChange}
     >
-      <DialogContent className="max-w-xl">
+      <DialogContent className="w-[95vw] max-w-xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             Edit Service

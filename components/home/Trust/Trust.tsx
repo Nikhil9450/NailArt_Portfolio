@@ -31,7 +31,7 @@ export default function Trust() {
   return (
     <section className="bg-white py-16">
       <Container>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {trustItems.map((item, index) => {
             const Icon = item.icon;
 

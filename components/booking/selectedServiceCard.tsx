@@ -39,7 +39,7 @@ export default function SelectedServiceCard({
           {service.title}
         </h3>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
           <span className="rounded-full bg-pink-100 px-3 py-1 text-sm font-medium text-pink-600">
             ₹{service.price}

@@ -9,7 +9,13 @@ import {
   Briefcase,
   MessageSquare,
   Settings,
+  X,
 } from "lucide-react";
+
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
 
 const menu = [
   {
@@ -44,35 +50,74 @@ const menu = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  open,
+  onClose,
+}: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="h-screen w-72 border-r bg-white p-6">
-      <h2 className="mb-10 text-3xl font-bold text-pink-600">
-        Nail Studio
-      </h2>
+    <>
+      {/* Overlay */}
+      {open && (
+        <div
+          onClick={onClose}
+          className="fixed inset-0 z-40 bg-black/40 md:hidden"
+        />
+      )}
 
-      <nav className="space-y-2">
-        {menu.map((item) => {
-          const Icon = item.icon;
+      <aside
+        className={`
+          fixed left-0 top-0 z-50 h-screen w-72
+          border-r bg-white p-6
+          transition-transform duration-300
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition ${
-                pathname === item.href
-                  ? "bg-pink-600 text-white"
-                  : "hover:bg-pink-100"
-              }`}
-            >
-              <Icon size={20} />
-              {item.title}
-            </Link>
-          );
-        })}
-      </nav>
-    </aside>
+          ${
+            open
+              ? "translate-x-0"
+              : "-translate-x-full"
+          }
+
+          md:static
+          md:translate-x-0
+        `}
+      >
+        <div className="mb-10 flex items-center justify-between">
+          <h2 className="text-3xl font-bold text-pink-600">
+            Nail Studio
+          </h2>
+
+          <button
+            onClick={onClose}
+            className="md:hidden"
+          >
+            <X />
+          </button>
+        </div>
+
+        <nav className="space-y-2">
+          {menu.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={onClose}
+                className={`flex items-center gap-3 rounded-xl px-4 py-3 transition ${
+                  pathname === item.href
+                    ? "bg-pink-600 text-white"
+                    : "hover:bg-pink-100"
+                }`}
+              >
+                <Icon size={20} />
+
+                {item.title}
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+    </>
   );
 }

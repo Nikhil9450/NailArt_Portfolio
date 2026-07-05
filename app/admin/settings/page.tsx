@@ -1,3 +1,5 @@
+import SettingsManager from "@/app/admin/SettingsManager";
+
 export default function SettingsPage() {
-  return <h1 className="text-3xl font-bold">Settings</h1>;
+  return <SettingsManager />;
 }

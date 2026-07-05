@@ -22,7 +22,7 @@ export default function BookingSuccessDialog({
 }: BookingSuccessDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md rounded-3xl">
+      <DialogContent className="w-[95vw] max-w-xl max-h-[90vh] overflow-y-auto">
 
         <DialogHeader>
           <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-pink-100">

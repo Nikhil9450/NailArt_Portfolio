@@ -2,8 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Settings } from "@/types/settings";
 
-export default function AboutImage() {
+interface AboutImageProps {
+  settings: Settings;
+}
+
+export default function AboutImage({
+  settings,
+}: AboutImageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -60 }}
@@ -13,7 +20,7 @@ export default function AboutImage() {
       className="relative"
     >
       <Image
-        src="/images/about/about.jpg"
+        src={settings.aboutImage || "/images/about/about.jpg"}
         alt="Nail Artist"
         width={500}
         height={650}

@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import GalleryCard from "@/components/cards/GalleryCard";
-import { GalleryItem } from "@/types/gallery";
+import { Gallery } from "@/types/gallery";
 
 interface GalleryGridProps {
-  items: GalleryItem[];
+  items: Gallery[];
   onOpen: (index: number) => void;
 }
 
@@ -34,7 +34,7 @@ export default function GalleryGrid({
       <AnimatePresence mode="popLayout">
         {items.map((item, index) => (
           <motion.div
-            key={item.id}
+            key={item._id}
             layout
             initial={{
               opacity: 0,

@@ -4,12 +4,19 @@ import cloudinary from "@/lib/cloudinary";
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-
+    const MAX_SIZE = 3 * 1024 * 1024; // 3 MB
     const file = formData.get("file") as File;
 
     if (!file) {
       return NextResponse.json(
         { message: "No file uploaded" },
+        { status: 400 }
+      );
+    }
+
+    if (file.size > MAX_SIZE) {
+      return NextResponse.json(
+        { message: "File size must be less than 3 MB" },
         { status: 400 }
       );
     }

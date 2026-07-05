@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
-import { GalleryItem } from "@/types/gallery";
+import { Gallery } from "@/types/gallery";
 interface GalleryCardProps {
-  item: GalleryItem;
+  item: Gallery;
   index: number;
   onOpen: (index: number) => void;
 }
@@ -29,10 +29,7 @@ export default function GalleryCard({
   className="cursor-pointer group relative overflow-hidden rounded-3xl"
 >
 <div
-  className="relative w-full overflow-hidden rounded-3xl"
-  style={{
-    height: `${item.height ?? 320}px`,
-  }}
+  className="relative h-80 w-full overflow-hidden rounded-3xl"
 >
   <Image
     src={item.image}

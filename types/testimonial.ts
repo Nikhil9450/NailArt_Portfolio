@@ -1,8 +1,13 @@
 export interface Testimonial {
-  id: number;
+  _id?: string;
+
   name: string;
-  service: string;
-  rating: number;
+
   image: string;
+
   review: string;
+
+  service: string;
+
+  rating: number;
 }

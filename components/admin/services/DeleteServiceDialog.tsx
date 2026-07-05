@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { toast } from "sonner";
+
 import {
   Dialog,
   DialogContent,
@@ -9,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+
 import { Service } from "@/types/service";
 import { deleteService } from "@/lib/api/service";
 
@@ -26,33 +29,37 @@ export default function DeleteServiceDialog({
   onSuccess,
   service,
 }: DeleteServiceDialogProps) {
+  const [loading, setLoading] = useState(false);
+
   if (!service) return null;
-    const [loading, setLoading] = useState(false);
-const handleDelete = async () => {
-  if (!service) return;
 
-  try {
-    setLoading(true);
+  const handleDelete = async () => {
+    if (!service._id) return;
 
-    await deleteService(service._id);
+    try {
+      setLoading(true);
 
-    onSuccess();
+      await deleteService(service._id);
 
-    onOpenChange(false);
-  } catch (error) {
-    console.error(error);
-    alert("Failed to delete service.");
-  } finally {
-    setLoading(false);
-  }
-};
+      toast.success("Service deleted successfully.");
+
+      onSuccess();
+
+      onOpenChange(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete service.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Dialog
       open={open}
       onOpenChange={onOpenChange}
     >
-      <DialogContent>
+      <DialogContent className="w-[95vw] max-w-xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             Delete Service
@@ -69,21 +76,21 @@ const handleDelete = async () => {
         </p>
 
         <DialogFooter>
-            <Button
+          <Button
             variant="outline"
             onClick={() => onOpenChange(false)}
             disabled={loading}
-            >
+          >
             Cancel
-            </Button>
+          </Button>
 
-            <Button
+          <Button
             variant="destructive"
             onClick={handleDelete}
             disabled={loading}
-            >
+          >
             {loading ? "Deleting..." : "Delete"}
-            </Button>
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

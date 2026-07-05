@@ -13,18 +13,18 @@ export default function RecentBookings({
 
   return (
     <div className="mt-10 rounded-3xl bg-white p-6 shadow-sm">
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h2 className="text-xl md:text-2xl font-bold">
           Recent Bookings
         </h2>
 
-        <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-600">
+        <span className="rounded-full bg-pink-100 px-4 py-2 text-xs md:text-sm font-medium text-pink-600">
           {recentBookings.length} Recent
         </span>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
+      <div className="overflow-x-auto rounded-xl border bg-white">
+        <table className="min-w-[700px] w-full">
           <thead>
             <tr className="border-b">
               <th className="p-4 text-left">Customer</th>
@@ -71,7 +71,7 @@ export default function RecentBookings({
 
                   <td className="p-4">
                     <span
-                      className={`rounded-full px-3 py-1 text-sm ${
+                      className={`rounded-full px-3 py-1 text-xs md:text-sm ${
                         booking.status === "Pending"
                           ? "bg-yellow-100 text-yellow-700"
                           : booking.status === "Confirmed"

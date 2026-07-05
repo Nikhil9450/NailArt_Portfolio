@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { toast } from "sonner";
 import { Gallery } from "@/types/gallery";
 import { updateGallery } from "@/lib/api/gallery";
 
@@ -51,7 +51,7 @@ export default function EditGalleryDialog({
       onClose();
     } catch (error) {
       console.error(error);
-      alert("Failed to update image");
+      toast.error("Failed to update image");
     } finally {
       setLoading(false);
     }

@@ -9,16 +9,17 @@ import GalleryFilter from "./GalleryFilter";
 import GalleryGrid from "./GalleryGrid";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { GalleryItem } from "@/types/gallery";
-import { galleryCategories } from "@/data/galleryCategories";
+import { Gallery } from "@/types/gallery";
 import GallerySearch from "./GallerySearch";
 
 interface FeaturedGalleryClientProps {
-  featuredGallery: GalleryItem[];
+  featuredGallery: Gallery[];
+  categories: string[];
 }
 
 export default function FeaturedGalleryClient({
   featuredGallery,
+  categories,
 }: FeaturedGalleryClientProps) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
@@ -67,7 +68,7 @@ const filteredGallery = useMemo(() => {
         </motion.div>
 
         <GalleryFilter
-          categories={galleryCategories}
+          categories={categories}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />

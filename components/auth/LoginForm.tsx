@@ -24,7 +24,7 @@ export default function LoginForm() {
 
             router.push("/admin");
         } catch (error) {
-            alert("Invalid credentials");
+            toast.error("Invalid credentials");
         } finally {
             setLoading(false);
         }

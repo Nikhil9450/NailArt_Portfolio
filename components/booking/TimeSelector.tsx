@@ -17,7 +17,7 @@ export default function TimeSelector({
         Select Time
       </label>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {slots.map((slot) => (
         <button
           key={slot.id}

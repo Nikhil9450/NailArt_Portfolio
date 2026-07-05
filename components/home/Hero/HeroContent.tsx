@@ -3,8 +3,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import HeroStats from "./HeroStats";
+import { Settings } from "@/types/settings";
 
-export default function HeroContent() {
+interface HeroContentProps {
+  settings: Settings;
+}
+
+export default function HeroContent({
+  settings,
+}: HeroContentProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -60 }}
@@ -16,14 +23,17 @@ export default function HeroContent() {
       </span>
 
       <h1 className="mt-6 text-5xl font-bold leading-tight lg:text-7xl">
-        Luxury Nail
-        <br />
-        Designs
+        {settings.heroTitle || (
+          <>
+            Luxury Nail
+            <br />
+            Designs
+          </>
+        )}
       </h1>
 
       <p className="mt-6 max-w-lg text-lg text-gray-600">
-        Beautiful nail art crafted with creativity, elegance, and attention to
-        every detail. Your nails deserve to stand out.
+          {settings.heroSubtitle || "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4">

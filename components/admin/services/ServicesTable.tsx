@@ -24,8 +24,8 @@ export default function ServicesTable({
   }
 
   return (
-    <div className="overflow-x-auto rounded-3xl bg-white shadow-sm">
-      <table className="min-w-full">
+    <div className="overflow-x-auto rounded-xl border bg-white">
+      <table className="min-w-[900px] w-full">
         <thead>
           <tr className="border-b">
             <th className="p-4 text-left">Image</th>

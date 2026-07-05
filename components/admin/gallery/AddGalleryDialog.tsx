@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { createGallery } from "@/lib/api/gallery";
-
+import { toast } from "sonner";
+import { validateImage } from "@/lib/imageValidation";
 interface AddGalleryDialogProps {
   open: boolean;
   onClose: () => void;
@@ -27,7 +28,7 @@ const handleSubmit = async (
     e.preventDefault();
 
     if (!file) {
-      alert("Please select an image.");
+      toast.error("Please select an image.");
       return;
     }
 
@@ -61,7 +62,7 @@ const handleSubmit = async (
       onClose();
     }catch (error) {
         console.error(error);
-        alert("Failed to upload image.");
+        toast.error("Failed to upload image.");
     } finally {
         setLoading(false);
     }
@@ -119,6 +120,10 @@ const handleSubmit = async (
                 type="file"
                 accept="image/*"
                 onChange={(e) => {
+                if (!validateImage(e.target.files?.[0] ?? null)) {
+                e.target.value = "";
+                return;
+                }
                 if (e.target.files?.[0]) {
                     setFile(e.target.files[0]);
                 }

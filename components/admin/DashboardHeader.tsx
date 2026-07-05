@@ -1,18 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CalendarDays } from "lucide-react";
-import { LogOut } from "lucide-react";
+import {
+  CalendarDays,
+  LogOut,
+  Menu,
+} from "lucide-react";
+
 import { logout } from "@/lib/api/logout";
 import { useRouter } from "next/navigation";
-export default function DashboardHeader() {
+
+interface DashboardHeaderProps {
+  onMenuClick: () => void;
+}
+
+export default function DashboardHeader({
+  onMenuClick,
+}: DashboardHeaderProps) {
   const [today, setToday] = useState("");
+
   const router = useRouter();
 
-  const handleLogout = async () => {
-    await logout();
-    router.push("/login");
-  };
   useEffect(() => {
     setToday(
       new Intl.DateTimeFormat("en-IN", {
@@ -24,32 +32,58 @@ export default function DashboardHeader() {
     );
   }, []);
 
+  async function handleLogout() {
+    await logout();
+
+    router.push("/login");
+  }
+
   return (
-    <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-      <div>
-        <h1 className="text-4xl font-bold">
-          Admin Dashboard
-        </h1>
+    <header className="sticky top-0 z-30 border-b bg-white">
+      <div className="flex items-center justify-between px-4 py-4 md:px-8">
 
-        <p className="mt-2 text-gray-500">
-          Manage appointments and customers
-        </p>
-      </div>
+        <div className="flex items-center gap-4">
 
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 rounded-xl border bg-white px-5 py-3 shadow-sm">
-          <CalendarDays size={18} />
-          <span>{today}</span>
+          <button
+            onClick={onMenuClick}
+            className="rounded-lg border p-2 md:hidden"
+          >
+            <Menu size={22} />
+          </button>
+
+          <div>
+            <h1 className="text-2xl font-bold md:text-3xl">
+              Admin Dashboard
+            </h1>
+
+            <p className="hidden text-gray-500 md:block">
+              Manage appointments and customers
+            </p>
+          </div>
+
         </div>
 
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 text-white transition hover:bg-red-600"
-        >
-          <LogOut size={18} />
-          Logout
-        </button>
+        <div className="flex items-center gap-3">
+
+          <div className="hidden items-center gap-2 rounded-xl border bg-white px-4 py-2 shadow-sm md:flex">
+            <CalendarDays size={18} />
+            <span>{today}</span>
+          </div>
+
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 rounded-xl bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+          >
+            <LogOut size={18} />
+
+            <span className="hidden md:block">
+              Logout
+            </span>
+          </button>
+
+        </div>
+
       </div>
-    </div>
+    </header>
   );
 }

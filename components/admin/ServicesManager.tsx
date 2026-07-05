@@ -3,20 +3,25 @@
 import { useEffect, useState } from "react";
 
 import Container from "@/components/layout/Container";
+
 import { Service } from "@/types/service";
 import { getServices } from "@/lib/api/service";
-import EditServiceDialog from "./services/EditServiceDialog";
+
 import ServicesTable from "./services/ServicesTable";
 import AddServiceDialog from "./services/AddServiceDialog";
+import EditServiceDialog from "./services/EditServiceDialog";
+import usePagination from "@/hooks/usePagination";
+import Pagination from "@/components/common/Pagination";
 import DeleteServiceDialog from "./services/DeleteServiceDialog";
 export default function ServicesManager() {
-    const [services, setServices] = useState<Service[]>([]);
-    const [addOpen, setAddOpen] = useState(false);
-    const [selectedService, setSelectedService] =
+  const [services, setServices] = useState<Service[]>([]);
+  const [selectedService, setSelectedService] =
     useState<Service | null>(null);
-    const [deleteOpen, setDeleteOpen] = useState(false);
 
-    const [editOpen, setEditOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+
   useEffect(() => {
     loadServices();
   }, []);
@@ -30,41 +35,54 @@ export default function ServicesManager() {
     }
   }
 
-    const handleEdit = (service: Service) => {
+  const {
+    page,
+    setPage,
+    totalPages,
+    currentItems,
+  } = usePagination(services, 10);
+
+  const handleEdit = (service: Service) => {
     setSelectedService(service);
     setEditOpen(true);
-    };
+  };
 
-    const handleDelete = (service: Service) => {
+  const handleDelete = (service: Service) => {
     setSelectedService(service);
     setDeleteOpen(true);
-    };
+  };
+
   return (
     <main className="min-h-screen bg-gray-100 py-10">
       <Container>
-        <div className="mb-10 flex items-center justify-between">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold">
               Services Management
             </h1>
 
-            <p className="mt-2 text-gray-500">
+            <p className="text-sm md:text-base text-gray-500">
               Manage salon services.
             </p>
           </div>
 
           <button
             onClick={() => setAddOpen(true)}
-            className="rounded-xl bg-pink-600 px-5 py-3 text-white transition hover:bg-pink-700"
-          >
+            className="w-full md:w-auto rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700"          >
             + Add Service
           </button>
         </div>
 
         <ServicesTable
-            services={services}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
+          services={currentItems}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
         />
 
         <AddServiceDialog
@@ -72,17 +90,19 @@ export default function ServicesManager() {
           onOpenChange={setAddOpen}
           onSuccess={loadServices}
         />
+
         <EditServiceDialog
-        open={editOpen}
-            onOpenChange={setEditOpen}
-            onSuccess={loadServices}
-            service={selectedService}
+          open={editOpen}
+          onOpenChange={setEditOpen}
+          service={selectedService}
+          onSuccess={loadServices}
         />
+
         <DeleteServiceDialog
-            open={deleteOpen}
-            onOpenChange={setDeleteOpen}
-            service={selectedService}
-            onSuccess={loadServices}
+          open={deleteOpen}
+          onOpenChange={setDeleteOpen}
+          service={selectedService}
+          onSuccess={loadServices}
         />
       </Container>
     </main>

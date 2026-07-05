@@ -61,7 +61,7 @@ const stats = [
             key={stat.title}
             className="rounded-3xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="text-gray-500">
                   {stat.title}

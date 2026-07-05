@@ -1,22 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AddGalleryDialog from "./gallery/AddGalleryDialog";
+
 import Container from "@/components/layout/Container";
+
 import GalleryTable from "./gallery/GalleryTable";
+import AddGalleryDialog from "./gallery/AddGalleryDialog";
 import EditGalleryDialog from "./gallery/EditGalleryDialog";
-import { getGallery } from "@/lib/api/gallery";
-import { Gallery } from "@/types/gallery";
 import DeleteGalleryDialog from "./gallery/DeleteGalleryDialog";
+
+import { getGallery } from "@/lib/api/gallery";
+
+import { Gallery } from "@/types/gallery";
+
+import usePagination from "@/hooks/usePagination";
+import Pagination from "@/components/common/Pagination";
 
 export default function GalleryManager() {
   const [images, setImages] = useState<Gallery[]>([]);
   const [selectedImage, setSelectedImage] =
     useState<Gallery | null>(null);
-  const [deleteOpen, setDeleteOpen] =
-    useState(false);
+
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] =
+    useState(false);
 
   useEffect(() => {
     loadGallery();
@@ -31,26 +39,33 @@ export default function GalleryManager() {
     }
   }
 
+  const {
+    page,
+    setPage,
+    totalPages,
+    currentItems,
+  } = usePagination(images, 10);
+
   const handleEdit = (image: Gallery) => {
     setSelectedImage(image);
     setEditOpen(true);
   };
 
-const handleDelete = (image: Gallery) => {
-  setSelectedImage(image);
-  setDeleteOpen(true);
-};
+  const handleDelete = (image: Gallery) => {
+    setSelectedImage(image);
+    setDeleteOpen(true);
+  };
 
   return (
     <main className="min-h-screen bg-gray-100 py-10">
       <Container>
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold">
               Gallery Management
             </h1>
 
-            <p className="mt-2 text-gray-500">
+            <p className="text-sm md:text-base text-gray-500">
               Manage gallery images.
             </p>
           </div>
@@ -64,47 +79,30 @@ const handleDelete = (image: Gallery) => {
         </div>
 
         <GalleryTable
-          images={images}
+          images={currentItems}
           onEdit={handleEdit}
           onDelete={handleDelete}
         />
 
-        {/* Add Gallery Dialog */}
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+
         <AddGalleryDialog
           open={addOpen}
           onClose={() => setAddOpen(false)}
           onSuccess={loadGallery}
         />
 
-        {/* Edit Gallery Dialog */}
-        {editOpen && selectedImage && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-              <h2 className="mb-4 text-2xl font-bold">
-                Edit Gallery Image
-              </h2>
-
-              <p className="text-gray-500">
-                Editing: {selectedImage.title}
-              </p>
-
-              <div className="mt-6 flex justify-end">
-                <button
-                  onClick={() => setEditOpen(false)}
-                  className="rounded-lg bg-gray-200 px-4 py-2 hover:bg-gray-300"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
         <EditGalleryDialog
           open={editOpen}
           onClose={() => setEditOpen(false)}
-          onSuccess={loadGallery}
           image={selectedImage}
+          onSuccess={loadGallery}
         />
+
         <DeleteGalleryDialog
           open={deleteOpen}
           image={selectedImage}
