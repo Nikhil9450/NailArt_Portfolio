@@ -8,15 +8,17 @@ export default async function ServiceGrid() {
   return (
     <>
       {/* Mobile - Horizontal Scroll */}
-      <div className="mt-16 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:hidden hide-scrollbar">
-        {services.map((service: Service) => (
-          <div
-            key={service._id}
-            className="min-w-[260px] max-w-[260px] snap-center flex-shrink-0"
-          >
-            <ServiceCard service={service} />
-          </div>
-        ))}
+      <div className="mt-16 w-full overflow-hidden md:hidden">
+        <div className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory overscroll-x-contain hide-scrollbar">
+          {services.map((service: Service) => (
+            <div
+              key={service._id}
+              className="w-[260px] shrink-0 snap-start"
+            >
+              <ServiceCard service={service} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Tablet & Desktop */}

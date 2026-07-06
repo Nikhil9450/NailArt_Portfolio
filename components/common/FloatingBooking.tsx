@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-
+import { usePathname } from "next/navigation";
 export default function FloatingBooking() {
   const [visible, setVisible] = useState(true);
+  const pathname = usePathname();
 
 useEffect(() => {
   let lastScrollY = window.scrollY;
@@ -42,6 +43,11 @@ useEffect(() => {
   return () =>
     window.removeEventListener("scroll", handleScroll);
 }, []);
+
+  // Hide on booking page
+  if (pathname === "/book") {
+    return null;
+  }
 
   return (
 <motion.div

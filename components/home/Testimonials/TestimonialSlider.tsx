@@ -21,17 +21,17 @@ export default function TestimonialSlider({
   return (
     <>
       {/* Mobile */}
-      <div className="mt-16 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:hidden hide-scrollbar">
-        {testimonials.map((testimonial) => (
-          <div
-            key={testimonial._id}
-            className="min-w-[260px] max-w-[260px] flex-shrink-0 snap-center"
-          >
-            <TestimonialCard
-              testimonial={testimonial}
-            />
-          </div>
-        ))}
+      <div className="mt-16 w-full overflow-hidden md:hidden">
+        <div className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory overscroll-x-contain hide-scrollbar">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial._id}
+              className="w-[260px] shrink-0 snap-start"
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Tablet & Desktop */}

@@ -12,7 +12,7 @@ export default function SearchBar({
   onChange,
 }: SearchBarProps) {
   return (
-    <div className="mb-8 relative">
+    <div className="relative">
       <Search
         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
         size={20}

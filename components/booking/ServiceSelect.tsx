@@ -37,7 +37,7 @@ export default function ServiceSelect({
         <SelectContent>
           {services.map((service) => (
             <SelectItem
-              key={service.id}
+              key={service._id}
               value={service.title}
             >
               {service.title} • ₹{service.price}
