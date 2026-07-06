@@ -44,7 +44,7 @@ export default function TimeSelector({
               {slot.available ? "🕘" : "🔒"}
             </div>
 
-            <p className="font-semibold">
+            <p className="text-sm font-semibold sm:text-base">
               {slot.time}
             </p>
 
