@@ -18,12 +18,13 @@ export default function DateSelector({
         Select Date
       </label>
 
-      <div className="rounded-2xl border bg-white p-4">
+      <div className="overflow-x-auto rounded-2xl border bg-white p-3 sm:p-4">        
         <DayPicker
           mode="single"
           selected={value}
           onSelect={onChange}
           disabled={{ before: new Date() }}
+          className="mx-auto"
         />
       </div>
     </div>

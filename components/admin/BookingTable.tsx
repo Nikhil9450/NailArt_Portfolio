@@ -51,8 +51,8 @@ export default function BookingTable({
         All Bookings
       </h2>
 
-      <div className="overflow-x-auto rounded-xl border bg-white">
-        <table className="min-w-[900px] w-full">
+      <div className="w-full overflow-x-auto rounded-xl border bg-white">
+        <table className="min-w-[850px] w-full">
           <thead>
             <tr className="border-b">
               <th className="p-4 text-left">Customer</th>

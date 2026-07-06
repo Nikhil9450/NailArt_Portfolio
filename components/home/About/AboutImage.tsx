@@ -17,22 +17,22 @@ export default function AboutImage({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="relative"
+      className="relative mx-auto w-full max-w-sm md:max-w-md lg:max-w-none"
     >
       <Image
         src={settings.aboutImage || "/images/about/about.jpg"}
         alt="Nail Artist"
         width={500}
         height={650}
-        className="rounded-3xl object-cover shadow-2xl"
+        className="h-auto w-full rounded-3xl object-cover shadow-2xl"
       />
 
-      <div className="absolute -bottom-8 -right-8 rounded-3xl bg-white p-6 shadow-xl">
-        <h3 className="text-4xl font-bold text-pink-500">
+      <div className="absolute bottom-4 right-4 rounded-2xl bg-white px-5 py-4 shadow-xl md:-bottom-8 md:-right-8 md:rounded-3xl md:p-6">
+        <h3 className="text-2xl font-bold text-pink-500 md:text-4xl">
           8+
         </h3>
 
-        <p className="text-gray-500">
+        <p className="text-xs text-gray-500 md:text-base">
           Years Experience
         </p>
       </div>

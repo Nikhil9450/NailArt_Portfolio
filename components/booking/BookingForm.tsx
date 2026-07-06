@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createBooking } from "@/lib/api/booking";
 import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
-
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import ServiceSelect from "./ServiceSelect";
 import TimeSelector from "./TimeSelector";
 import DateSelector from "./DateSelector";
@@ -25,7 +26,10 @@ export default function BookingForm() {
   const [selectedTime, setSelectedTime] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
+  const selectedServiceFromURL =
+    searchParams.get("service");
   const {
   register,
   handleSubmit,
@@ -55,6 +59,11 @@ export default function BookingForm() {
   //   });
   //   setSuccessOpen(true);
   // };
+  useEffect(() => {
+    if (selectedServiceFromURL) {
+      setValue("service", selectedServiceFromURL);
+    }
+  }, [selectedServiceFromURL, setValue]);
 const selectedService = services.find(
   (service) => service.title === watch("service")
 );
@@ -89,103 +98,136 @@ const onSubmit = async (data: BookingSchema) => {
   }
 };
   return (
-    <Container>
-      <div className="mx-auto mt-16 grid max-w-6xl gap-10 lg:grid-cols-1
-sm:grid-cols-2
-lg:grid-cols-3">
+<Container>
+  <div className="mx-auto mt-8 grid max-w-7xl gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-10">
 
-        {/* LEFT */}
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="rounded-3xl bg-white p-8 shadow-lg lg:col-span-2"
-        >
-          <ServiceSelect
-            services={services}
-            value={watch("service")}
-            onChange={(value) => setValue("service", value)}
-          />
+    {/* Summary */}
+    <div className="order-1 lg:order-2">
+      <div className="rounded-3xl bg-pink-600 p-5 text-white shadow-xl lg:sticky lg:top-28 lg:p-8">
+        <h3 className="mb-5 text-xl font-bold lg:text-2xl">
+          Booking Summary
+        </h3>
 
+        <SelectedServiceCard
+          service={selectedService}
+        />
+
+        <div className="mt-6 space-y-5">
+
+          <div className="border-t border-pink-400 pt-4">
+            <p className="text-xs uppercase tracking-wide text-pink-200">
+              Date
+            </p>
+
+            <p className="mt-1 font-semibold">
+              {selectedDate
+                ? selectedDate.toLocaleDateString()
+                : "Not Selected"}
+            </p>
+          </div>
+
+          <div className="border-t border-pink-400 pt-4">
+            <p className="text-xs uppercase tracking-wide text-pink-200">
+              Time
+            </p>
+
+            <p className="mt-1 font-semibold">
+              {selectedTime || "Not Selected"}
+            </p>
+          </div>
+
+          <div className="border-t border-pink-400 pt-4">
+            <p className="text-xs uppercase tracking-wide text-pink-200">
+              Customer
+            </p>
+
+            <p className="mt-1 font-semibold">
+              {watch("name") || "Not Entered"}
+            </p>
+          </div>
+
+          <div className="border-t border-pink-400 pt-4">
+            <p className="text-xs uppercase tracking-wide text-pink-200">
+              Phone
+            </p>
+
+            <p className="mt-1 font-semibold">
+              {watch("phone") || "Not Entered"}
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {/* Form */}
+    <div className="order-2 lg:order-1 lg:col-span-2">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="rounded-3xl bg-white p-5 shadow-xl sm:p-6 lg:p-8"
+      >
+        <div className="rounded-2xl border border-gray-100 p-5">
+        <ServiceSelect
+          services={services}
+          value={watch("service")}
+          onChange={(value) =>
+            setValue("service", value)
+          }
+        />
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
           <DateSelector
             value={selectedDate}
             onChange={setSelectedDate}
           />
+        </div>
 
+        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
           <TimeSelector
             slots={timeSlots}
             value={selectedTime}
             onChange={setSelectedTime}
           />
+        </div>
 
+        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
           <CustomerDetails
             register={register}
             errors={errors}
           />
+        </div>
 
-          <Button
-            type="submit"
-            disabled={loading}
-            className="mt-10 w-full rounded-full"
-          >
-            {loading ? "Booking..." : "Book Appointment"}
-          </Button>
-        </form>
+        <Button
+          type="submit"
+          disabled={loading}
+          className="
+            mt-8
+            h-14
+            w-full
+            rounded-full
+            bg-pink-600
+            text-base
+            font-semibold
+            shadow-lg
+            transition-all
+            hover:-translate-y-1
+            hover:bg-pink-700
+            hover:shadow-xl
+            active:scale-95
+          "
+        >
+          {loading ? "Booking..." : "Book Appointment"}
+        </Button>
+      </form>
+    </div>
 
-        {/* RIGHT */}
-        <div className="rounded-3xl bg-pink-600 p-8 text-white shadow-lg">
-          <h3 className="text-2xl font-bold">
-            Booking Summary
-          </h3>
-            <SelectedServiceCard
-              service={selectedService}
-            />
-            <div className="border-t border-pink-400 pt-5">
-              <p className="text-sm text-pink-200">
-                Date
-              </p>
+  </div>
 
-              <p className="font-semibold">
-                {selectedDate
-                  ? selectedDate.toLocaleDateString()
-                  : "Not Selected"}
-              </p>
-            </div>
-
-            <div className="border-t border-pink-400 pt-5">
-              <p className="text-sm text-pink-200">
-                Time
-              </p>
-
-              <p className="font-semibold">
-                {selectedTime || "Not Selected"}
-              </p>
-            </div>
-
-            <div className="border-t border-pink-400 pt-5">
-              <p className="text-sm text-pink-200">
-                Customer
-              </p>
-
-              <p className="font-semibold">
-                {watch("name") || "Not Entered"}
-              </p>
-            </div>
-
-            <div className="border-t border-pink-400 pt-5">
-              <p className="text-sm text-pink-200">
-                Phone
-              </p>
-
-              <p className="font-semibold">
-                {watch("phone") || "Not Entered"}
-              </p>
-            </div>
-          </div>
-        {/* </div> */}
-        <BookingSuccessDialog
-          open={successOpen}
-          onOpenChange={setSuccessOpen}
-        />
-      </div>
-    </Container>
+  <BookingSuccessDialog
+    open={successOpen}
+    onOpenChange={setSuccessOpen}
+  />
+</Container>
   );
 }

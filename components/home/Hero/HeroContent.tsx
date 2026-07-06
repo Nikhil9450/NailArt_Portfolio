@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import HeroStats from "./HeroStats";
 import { Settings } from "@/types/settings";
@@ -33,15 +35,25 @@ export default function HeroContent({
       </h1>
 
       <p className="mt-6 max-w-lg text-lg text-gray-600">
-          {settings.heroSubtitle || "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
+        {settings.heroSubtitle ||
+          "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4">
-        <Button size="lg">Book Appointment</Button>
+        <Link href="/book">
+          <Button size="lg">
+            Book Appointment
+          </Button>
+        </Link>
 
-        <Button variant="outline" size="lg">
-          View Portfolio
-        </Button>
+        <Link href="/portfolio">
+          <Button
+            variant="outline"
+            size="lg"
+          >
+            View Portfolio
+          </Button>
+        </Link>
       </div>
 
       <HeroStats />

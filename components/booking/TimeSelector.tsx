@@ -17,14 +17,13 @@ export default function TimeSelector({
         Select Time
       </label>
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {slots.map((slot) => (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3">      {slots.map((slot) => (
         <button
           key={slot.id}
           type="button"
           disabled={!slot.available}
           onClick={() => onChange(slot.time)}
-          className={`group rounded-2xl border p-5 transition-all duration-300
+          className={`group rounded-2xl border p-3 sm:p-4 transition-all duration-300
 
           ${
             value === slot.time
@@ -41,7 +40,7 @@ export default function TimeSelector({
         >
           <div className="space-y-2">
 
-            <div className="text-2xl">
+            <div className="text-xl">
               {slot.available ? "🕘" : "🔒"}
             </div>
 

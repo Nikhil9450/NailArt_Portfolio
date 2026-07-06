@@ -23,8 +23,8 @@ export default function RecentBookings({
         </span>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border bg-white">
-        <table className="min-w-[700px] w-full">
+      <div className="w-full overflow-x-auto rounded-xl border bg-white">
+        <table className="min-w-[850px] w-full">
           <thead>
             <tr className="border-b">
               <th className="p-4 text-left">Customer</th>

@@ -16,8 +16,8 @@ export default function TestimonialsTable({
   onDelete,
 }: TestimonialsTableProps) {
   return (
-    <div className="overflow-x-auto rounded-xl border bg-white">
-    <table className="min-w-[900px] w-full">
+    <div className="w-full overflow-x-auto rounded-xl border bg-white">
+      <table className="min-w-[850px] w-full">
         <thead className="border-b bg-gray-50">
           <tr>
             <th className="p-4 text-left">Customer</th>

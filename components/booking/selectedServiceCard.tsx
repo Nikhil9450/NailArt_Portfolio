@@ -22,43 +22,39 @@ export default function SelectedServiceCard({
   }
 
   return (
-    <div className="mt-6 overflow-hidden rounded-2xl bg-white text-gray-900 shadow-lg">
-
-      <div className="relative h-52">
-        <Image
+  <div className="mt-5 overflow-hidden rounded-2xl bg-white text-gray-900 shadow-lg">
+    <div className="flex">
+      <div className="relative h-24 w-24 shrink-0 sm:h-32 sm:w-32">        <Image
           src={service.image}
           alt={service.title}
           fill
-          className="object-cover"
+          className="rounded-l-2xl object-cover"
         />
       </div>
 
-      <div className="space-y-4 p-5">
+      <div className="flex flex-1 flex-col justify-between p-4">
+        <div>
+          <h3 className="line-clamp-2 text-base font-bold sm:text-lg">
+              {service.title}
+          </h3>
 
-        <h3 className="text-xl font-bold">
-          {service.title}
-        </h3>
+          <p className="mt-1 text-xs sm:text-sm text-gray-500 ">
+            {service.category}
+          </p>
+        </div>
 
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
-          <span className="rounded-full bg-pink-100 px-3 py-1 text-sm font-medium text-pink-600">
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+          <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-medium text-pink-600">
             ₹{service.price}
           </span>
 
-          <span className="flex items-center gap-2 text-gray-600">
-            <Clock size={16} />
+          <span className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs">
+            <Clock size={14} />
             {service.duration}
           </span>
-
         </div>
-
-        <div className="flex items-center gap-2 text-gray-600">
-          <Tag size={16} />
-          {service.category}
-        </div>
-
       </div>
-
     </div>
+  </div>
   );
 }

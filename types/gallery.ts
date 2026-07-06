@@ -5,4 +5,6 @@ export interface Gallery {
   category: string;
   createdAt?: string;
   updatedAt?: string;
+  width: number;
+  height: number;
 }

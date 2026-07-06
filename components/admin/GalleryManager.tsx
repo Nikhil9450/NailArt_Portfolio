@@ -57,8 +57,7 @@ export default function GalleryManager() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 py-10">
-      <Container>
+      <Container className="py-6">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold">
@@ -110,6 +109,5 @@ export default function GalleryManager() {
           onSuccess={loadGallery}
         />
       </Container>
-    </main>
   );
 }

@@ -53,8 +53,7 @@ export default function ServicesManager() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 py-10">
-      <Container>
+      <Container className="py-6">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold">
@@ -68,7 +67,7 @@ export default function ServicesManager() {
 
           <button
             onClick={() => setAddOpen(true)}
-            className="w-full md:w-auto rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700"          >
+             className="self-start rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700 md:self-auto" >
             + Add Service
           </button>
         </div>
@@ -105,6 +104,5 @@ export default function ServicesManager() {
           onSuccess={loadServices}
         />
       </Container>
-    </main>
   );
 }

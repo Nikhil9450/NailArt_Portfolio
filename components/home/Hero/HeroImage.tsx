@@ -33,7 +33,7 @@ export default function HeroImage({
       />
 
       {/* Rating Card */}
-      <FloatingCard className="absolute -left-10 top-12 hidden md:block">
+      {/* <FloatingCard className="absolute -left-10 top-12 hidden md:block">
         <div className="flex items-center gap-3">
           <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
           <div>
@@ -41,10 +41,10 @@ export default function HeroImage({
             <p className="text-sm text-gray-500">200+ Reviews</p>
           </div>
         </div>
-      </FloatingCard>
+      </FloatingCard> */}
 
       {/* Client Card */}
-      <FloatingCard className="absolute -right-10 bottom-16 hidden md:block">
+      {/* <FloatingCard className="absolute -right-10 bottom-16 hidden md:block">
         <div className="flex items-center gap-3">
           <Users className="h-5 w-5 text-pink-500" />
           <div>
@@ -54,7 +54,7 @@ export default function HeroImage({
             </p>
           </div>
         </div>
-      </FloatingCard>
+      </FloatingCard> */}
     </motion.div>
   );
 }

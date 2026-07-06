@@ -53,6 +53,8 @@ const handleSubmit = async (
         title,
         category,
         image: uploadData.url,
+        width: uploadData.width,
+        height: uploadData.height,
       });
         setTitle("");
         setCategory("");

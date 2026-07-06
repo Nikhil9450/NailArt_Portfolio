@@ -35,6 +35,8 @@ export async function POST(request: Request) {
     return NextResponse.json({
     success: true,
     url: result.secure_url,
+    width: result.width,
+    height: result.height,
     publicId: result.public_id,
     });
   } catch (error) {

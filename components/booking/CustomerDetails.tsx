@@ -17,8 +17,8 @@ export default function CustomerDetails({
   errors,
 }: CustomerDetailsProps) {
   return (
-    <div className="mt-10 space-y-6">
-      <h3 className="text-2xl font-semibold">
+    <div className="mt-10 space-y-5">
+      <h3 className="text-xl md:text-2xl font-semibold">
         Your Details
       </h3>
 
@@ -31,8 +31,21 @@ export default function CustomerDetails({
         <input
           {...register("name")}
           placeholder="Enter your name"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-pink-500 focus:outline-none"
-        />
+          className="
+          h-12
+          w-full
+          rounded-xl
+          border
+          border-gray-200
+          bg-gray-50
+          px-4
+          transition-all
+          focus:border-pink-500
+          focus:bg-white
+          focus:ring-4
+          focus:ring-pink-100
+          focus:outline-none
+          "        />
 
         {errors.name && (
           <p className="mt-1 text-sm text-red-500">
@@ -50,8 +63,21 @@ export default function CustomerDetails({
         <input
           {...register("phone")}
           placeholder="9876543210"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-pink-500 focus:outline-none"
-        />
+className="
+w-full
+rounded-xl
+border
+border-gray-200
+bg-gray-50
+px-4
+py-3
+transition-all
+focus:border-pink-500
+focus:bg-white
+focus:ring-4
+focus:ring-pink-100
+focus:outline-none
+"        />
 
         {errors.phone && (
           <p className="mt-1 text-sm text-red-500">
@@ -69,8 +95,21 @@ export default function CustomerDetails({
         <input
           {...register("instagram")}
           placeholder="@username"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-pink-500 focus:outline-none"
-        />
+className="
+w-full
+rounded-xl
+border
+border-gray-200
+bg-gray-50
+px-4
+py-3
+transition-all
+focus:border-pink-500
+focus:bg-white
+focus:ring-4
+focus:ring-pink-100
+focus:outline-none
+"        />
       </div>
 
       {/* Notes */}
@@ -83,8 +122,21 @@ export default function CustomerDetails({
           {...register("notes")}
           rows={4}
           placeholder="Any special requests..."
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-pink-500 focus:outline-none"
-        />
+className="
+w-full
+rounded-xl
+border
+border-gray-200
+bg-gray-50
+px-4
+py-3
+transition-all
+focus:border-pink-500
+focus:bg-white
+focus:ring-4
+focus:ring-pink-100
+focus:outline-none
+"        />
       </div>
     </div>
   );

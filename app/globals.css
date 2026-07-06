@@ -132,3 +132,35 @@
 html {
   scroll-behavior: smooth;
 }
+
+html,
+body {
+  max-width: 100%;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Masonry */
+
+.gallery-grid {
+  display: flex;
+  margin-left: -12px;
+  width: auto;
+}
+
+.gallery-grid-column {
+   flex: 1;
+  padding-left: 12px;
+  background-clip: padding-box;
+}
+
+.gallery-grid-column > div {
+  margin-bottom: 12px;
+}

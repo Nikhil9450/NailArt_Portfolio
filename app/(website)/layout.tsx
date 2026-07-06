@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-
+import FloatingBooking from "@/components/common/FloatingBooking";
 export default function WebsiteLayout({
   children,
 }: {
@@ -10,6 +10,7 @@ export default function WebsiteLayout({
     <>
       <Navbar />
       {children}
+      <FloatingBooking/>
       <Footer />
     </>
   );

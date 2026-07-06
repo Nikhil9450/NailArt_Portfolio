@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import { Settings } from "@/types/settings";
@@ -9,6 +9,7 @@ import { Settings } from "@/types/settings";
 interface AboutContentProps {
   settings: Settings;
 }
+
 const features = [
   "Certified Nail Technician",
   "Premium Quality Products",
@@ -26,34 +27,42 @@ export default function AboutContent({
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      {/* <Badge className="rounded-full px-4 py-2">
+      <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-600">
         About Me
-      </Badge> */}
-      <span className="rounded-full bg-pink-100 px-4 py-2 text-pink-600">
-  About Me
-</span>
+      </span>
 
-      <h2 className="mt-6 font-serif text-5xl font-bold">
+      <h2 className="mt-5 font-serif text-3xl font-bold leading-tight md:mt-6 md:text-5xl">
         {settings.aboutTitle || "Luxury Nail Artist"}
       </h2>
 
-      <p className="mt-6 text-lg leading-8 text-gray-600">
-      {settings.aboutDescription ||
-        "Creating elegant nail designs that enhance confidence and beauty. Every client receives personalized attention and premium-quality nail care."}
+      <p className="mt-4 text-base leading-7 text-gray-600 md:mt-6 md:text-lg md:leading-8">
+        {settings.aboutDescription ||
+          "Creating elegant nail designs that enhance confidence and beauty. Every client receives personalized attention and premium-quality nail care."}
       </p>
 
-      <div className="mt-8 space-y-4">
+      <div className="mt-6 space-y-3 md:mt-8 md:space-y-4">
         {features.map((feature) => (
-          <div key={feature} className="flex items-center gap-3">
-            <CheckCircle2 className="text-pink-500" />
-            <span>{feature}</span>
+          <div
+            key={feature}
+            className="flex items-center gap-3"
+          >
+            <CheckCircle2
+              size={20}
+              className="shrink-0 text-pink-500"
+            />
+
+            <span className="text-sm md:text-base">
+              {feature}
+            </span>
           </div>
         ))}
       </div>
 
-      <Button className="mt-10 rounded-full px-8">
-        Book Appointment
-      </Button>
+      <Link href="/book">
+        <Button className="mt-8 w-full rounded-full md:mt-10 md:w-auto md:px-8">
+          Book Appointment
+        </Button>
+      </Link>
     </motion.div>
   );
 }

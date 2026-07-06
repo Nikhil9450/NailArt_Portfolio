@@ -51,8 +51,7 @@ export default function BookingsManager() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 py-10">
-      <Container>
+      <Container className="py-6">
         <div className="mb-10">
           <h1 className="text-4xl font-bold">
             Booking Management
@@ -88,6 +87,5 @@ export default function BookingsManager() {
           booking={selectedBooking}
         />
       </Container>
-    </main>
   );
 }
