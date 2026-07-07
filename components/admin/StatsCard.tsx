@@ -60,7 +60,7 @@ export default function StatsCards({
         return (
           <div
             key={stat.title}
-            className="rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:rounded-[var(--theme-radius)] md:p-6"
+            className="rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:rounded-theme md:p-6"
           >
             <div className="flex items-center justify-between">
               <div className="min-w-0">

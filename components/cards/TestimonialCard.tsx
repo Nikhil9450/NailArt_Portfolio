@@ -12,7 +12,7 @@ export default function TestimonialCard({
   testimonial,
 }: Props) {
   return (
-    <div className="rounded-[var(--theme-radius)] bg-white p-5 shadow-lg md:p-8">
+    <div className="rounded-theme bg-white p-5 shadow-lg md:p-8">
       {/* Rating */}
       <div className="flex gap-1">
         {Array.from({

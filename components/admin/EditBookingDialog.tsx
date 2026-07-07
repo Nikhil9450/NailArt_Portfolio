@@ -48,7 +48,7 @@ export default function EditBookingDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-full max-w-lg rounded-[var(--theme-radius)] bg-white p-8 shadow-2xl">
+      <div className="w-full max-w-lg rounded-theme bg-white p-8 shadow-2xl">
         <h2 className="text-2xl font-bold">
           Edit Booking
         </h2>

@@ -58,7 +58,7 @@ export default function Trust() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="rounded-2xl border bg-white p-4 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl md:rounded-[var(--theme-radius)] md:p-6"
+                className="rounded-2xl border bg-white p-4 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl md:rounded-theme md:p-6"
               >
                 <Icon className="mx-auto mb-3 h-6 w-6 text-pink-500 md:mb-4 md:h-8 md:w-8" />
 

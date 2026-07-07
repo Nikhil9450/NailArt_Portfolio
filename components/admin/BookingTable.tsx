@@ -46,7 +46,7 @@ export default function BookingTable({
     }
     };
   return (
-    <div className="rounded-[var(--theme-radius)] bg-white p-6 shadow-sm">
+    <div className="rounded-theme bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-2xl font-bold">
         All Bookings
       </h2>

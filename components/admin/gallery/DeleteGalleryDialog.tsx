@@ -32,7 +32,7 @@ export default function DeleteGalleryDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="w-full max-w-md rounded-[var(--theme-radius)] bg-white p-8 shadow-xl">
+      <div className="w-full max-w-md rounded-theme bg-white p-8 shadow-xl">
         <h2 className="text-2xl font-bold">
           Delete Image
         </h2>

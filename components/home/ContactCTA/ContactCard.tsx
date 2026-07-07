@@ -7,7 +7,7 @@ import { contactData } from "@/data/contact";
 
 export default function ContactCard() {
   return (
-    <div className="rounded-[var(--theme-radius)]  p-8 text-white shadow-xl bg-[var(--theme-primary)]"
+    <div className="rounded-theme  p-8 text-white shadow-xl bg-[var(--theme-primary)]"
     >
       <h3 className="text-3xl font-bold">
         Ready for Beautiful Nails?

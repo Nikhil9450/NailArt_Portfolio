@@ -72,7 +72,7 @@ const handleSubmit = async (
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="w-full max-w-lg rounded-[var(--theme-radius)] bg-white p-8 shadow-xl">
+      <div className="w-full max-w-lg rounded-theme bg-white p-8 shadow-xl">
         <h2 className="mb-6 text-3xl font-bold">
           Add Gallery Image
         </h2>

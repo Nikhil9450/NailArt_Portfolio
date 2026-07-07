@@ -17,7 +17,7 @@ export default function ServicesTable({
 }: ServicesTableProps) {
   if (services.length === 0) {
     return (
-      <div className="rounded-[var(--theme-radius)] bg-white p-10 text-center shadow-sm">
+      <div className="rounded-theme bg-white p-10 text-center shadow-sm">
         No services found.
       </div>
     );

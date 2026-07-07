@@ -24,10 +24,10 @@ export default function AboutImage({
         alt="Nail Artist"
         width={500}
         height={650}
-        className="h-auto w-full rounded-[var(--theme-radius)] object-cover shadow-2xl"
+        className="h-auto w-full rounded-theme object-cover shadow-2xl"
       />
 
-      <div className="absolute bottom-4 right-4 rounded-2xl bg-white px-5 py-4 shadow-xl md:-bottom-8 md:-right-8 md:rounded-[var(--theme-radius)] md:p-6">
+      <div className="absolute bottom-4 right-4 rounded-2xl bg-white px-5 py-4 shadow-xl md:-bottom-8 md:-right-8 md:rounded-theme md:p-6">
         <h3 className="text-2xl font-bold text-pink-500 md:text-4xl">
           8+
         </h3>

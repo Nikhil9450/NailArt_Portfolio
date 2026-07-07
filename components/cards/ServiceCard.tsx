@@ -22,7 +22,7 @@ export default function ServiceCard({
       transition={{
         duration: 0.3,
       }}
-      className="group overflow-hidden rounded-[var(--theme-radius)] bg-white shadow-lg"
+      className="group overflow-hidden rounded-theme bg-white shadow-lg"
     >
       {/* Image */}
       <div className="relative h-44 overflow-hidden md:h-72">
