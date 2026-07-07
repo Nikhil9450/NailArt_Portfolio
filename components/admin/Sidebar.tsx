@@ -106,7 +106,7 @@ export default function Sidebar({
                 onClick={onClose}
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 transition ${
                   pathname === item.href
-                    ? "bg-pink-600 text-white"
+                    ? "bg-theme text-white"
                     : "hover:bg-[var(--theme-secondary)]"
                 }`}
               >

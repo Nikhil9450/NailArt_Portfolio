@@ -205,7 +205,7 @@ h6 {
    Theme Utility Classes
 ===================================== */
 
-/* @layer utilities {
+@layer utilities {
   .bg-theme {
     background-color: var(--theme-primary);
   }
@@ -241,4 +241,4 @@ h6 {
   .shadow-theme {
     box-shadow: 0 10px 25px rgb(0 0 0 / 0.08);
   }
-} */
+}
