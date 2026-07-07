@@ -185,3 +185,60 @@ body {
   --theme-heading-font: "Playfair Display";
   --theme-body-font: "Poppins";
 }
+
+body {
+  background: var(--theme-background);
+  color: var(--theme-text);
+  font-family: var(--theme-body-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--theme-heading-font);
+}
+
+/* =====================================
+   Theme Utility Classes
+===================================== */
+
+/* @layer utilities {
+  .bg-theme {
+    background-color: var(--theme-primary);
+  }
+
+  .bg-theme-secondary {
+    background-color: var(--theme-secondary);
+  }
+
+  .bg-theme-surface {
+    background-color: var(--theme-surface);
+  }
+
+  .text-theme {
+    color: var(--theme-text);
+  }
+
+  .text-theme-muted {
+    color: var(--theme-muted);
+  }
+
+  .text-theme-primary {
+    color: var(--theme-primary);
+  }
+
+  .border-theme {
+    border-color: var(--theme-primary);
+  }
+
+  .rounded-theme {
+    border-radius: var(--theme-radius);
+  }
+
+  .shadow-theme {
+    box-shadow: 0 10px 25px rgb(0 0 0 / 0.08);
+  }
+} */
