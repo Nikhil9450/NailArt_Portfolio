@@ -22,9 +22,10 @@ export default function SelectedServiceCard({
   }
 
   return (
-  <div className="mt-5 overflow-hidden rounded-2xl bg-white text-gray-900 shadow-lg">
+  <div className="mt-5 w-full overflow-hidden rounded-2xl bg-white text-gray-900 shadow-lg">
     <div className="flex">
-      <div className="relative h-24 w-24 shrink-0 sm:h-32 sm:w-32">        <Image
+      <div className="relative h-24 w-24 shrink-0 sm:h-32 sm:w-32">        
+        <Image
           src={service.image}
           alt={service.title}
           fill

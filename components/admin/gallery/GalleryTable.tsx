@@ -24,13 +24,14 @@ export default function GalleryTable({
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {images.map((image) => (
         <div
           key={image._id}
-          className="overflow-hidden rounded-3xl bg-white shadow-sm"
+          className="overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
         >
-          <div className="relative h-64">
+          {/* Image */}
+          <div className="relative aspect-square">
             <Image
               src={image.image}
               alt={image.title}
@@ -39,28 +40,29 @@ export default function GalleryTable({
             />
           </div>
 
-          <div className="p-5">
-            <h3 className="font-semibold">
+          {/* Content */}
+          <div className="p-3 md:p-4">
+            <h3 className="truncate text-sm font-semibold md:text-base">
               {image.title}
             </h3>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 truncate text-xs text-gray-500 md:text-sm">
               {image.category}
             </p>
 
-            <div className="mt-5 flex justify-end gap-2">
+            <div className="mt-3 flex items-center justify-end gap-2">
               <button
                 onClick={() => onEdit(image)}
-                className="rounded-lg p-2 text-blue-600 hover:bg-blue-100"
+                className="rounded-lg bg-blue-50 p-2 text-blue-600 transition hover:bg-blue-100"
               >
-                <Pencil size={18} />
+                <Pencil size={16} />
               </button>
 
               <button
                 onClick={() => onDelete(image)}
-                className="rounded-lg p-2 text-red-600 hover:bg-red-100"
+                className="rounded-lg bg-red-50 p-2 text-red-600 transition hover:bg-red-100"
               >
-                <Trash2 size={18} />
+                <Trash2 size={16} />
               </button>
             </div>
           </div>

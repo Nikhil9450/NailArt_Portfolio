@@ -49,7 +49,7 @@ export default function Dashboard() {
 
         <RecentBookings bookings={bookings} />
 
-        <RevenueChart data={revenueData} />
+        {/* <RevenueChart data={revenueData} /> */}
       </Container>
     </div>
   );
