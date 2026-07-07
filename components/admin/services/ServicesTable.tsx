@@ -17,7 +17,7 @@ export default function ServicesTable({
 }: ServicesTableProps) {
   if (services.length === 0) {
     return (
-      <div className="rounded-3xl bg-white p-10 text-center shadow-sm">
+      <div className="rounded-[var(--theme-radius)] bg-white p-10 text-center shadow-sm">
         No services found.
       </div>
     );
@@ -75,7 +75,7 @@ export default function ServicesTable({
 
           {/* Chips */}
           <div className="mt-3 flex flex-wrap gap-2">
-            <span className="rounded-full bg-pink-100 px-2.5 py-1 text-xs font-medium text-pink-600">
+            <span className="rounded-full bg-[var(--theme-secondary)] px-2.5 py-1 text-xs font-medium text-pink-600">
               ₹{service.price}
             </span>
 

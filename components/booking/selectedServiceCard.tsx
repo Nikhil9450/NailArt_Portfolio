@@ -45,7 +45,7 @@ export default function SelectedServiceCard({
         </div>
 
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-          <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-medium text-pink-600">
+          <span className="rounded-full bg-[var(--theme-secondary)] px-3 py-1 text-xs font-medium text-pink-600">
             ₹{service.price}
           </span>
 

@@ -81,6 +81,76 @@ const settingsSchema = new Schema(
       type: String,
       default: "",
     },
+
+    primaryColor: {
+      type: String,
+      default: "#ec4899",
+    },
+
+    secondaryColor: {
+      type: String,
+      default: "#fff1f6",
+    },
+
+    accentColor: {
+      type: String,
+      default: "#f472b6",
+    },
+
+    backgroundColor: {
+      type: String,
+      default: "#ffffff",
+    },
+
+    surfaceColor: {
+      type: String,
+      default: "#ffffff",
+    },
+
+    textColor: {
+      type: String,
+      default: "#111827",
+    },
+
+    mutedColor: {
+      type: String,
+      default: "#6b7280",
+    },
+
+    headingFont: {
+      type: String,
+      default: "Playfair Display",
+    },
+
+    bodyFont: {
+      type: String,
+      default: "Poppins",
+    },
+
+    borderRadius: {
+      type: Number,
+      default: 24,
+    },
+
+    buttonStyle: {
+      type: String,
+      default: "filled",
+    },
+
+    shadow: {
+      type: String,
+      default: "medium",
+    },
+
+    themeMode: {
+      type: String,
+      default: "light",
+    },
+
+    preset: {
+      type: String,
+      default: "Pink Luxury",
+    },  
   },
   {
     timestamps: true,

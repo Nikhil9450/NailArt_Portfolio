@@ -56,7 +56,7 @@ export default function ComparisonSlider({
       onMouseLeave={() => setIsDragging(false)}
       onTouchMove={handleTouchMove}
       onTouchEnd={() => setIsDragging(false)}
-      className={`relative mx-auto mt-12 h-[300px] w-full max-w-5xl overflow-hidden rounded-3xl md:h-[500px] ${
+      className={`relative mx-auto mt-12 h-[300px] w-full max-w-5xl overflow-hidden rounded-[var(--theme-radius)] md:h-[500px] ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}
     >

@@ -22,4 +22,34 @@ export interface Settings {
   aboutImage: string;
 
   workingHours: string;
+
+    // ⭐ Theme
+  primaryColor: string;
+  secondaryColor: string;
+  accentColor: string;
+
+  backgroundColor: string;
+  surfaceColor: string;
+
+  textColor: string;
+  mutedColor: string;
+
+  headingFont: string;
+  bodyFont: string;
+
+  borderRadius: number;
+
+  buttonStyle: "filled" | "outline" | "soft";
+
+  shadow:
+    | "none"
+    | "soft"
+    | "medium"
+    | "large";
+
+  themeMode:
+    | "light"
+    | "dark";
+
+  preset: string;
 }

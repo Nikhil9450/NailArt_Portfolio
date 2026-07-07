@@ -63,7 +63,8 @@ useEffect(() => {
   className="fixed bottom-5 left-4 right-4 z-50 md:hidden"
 >
       <Link href="/book">
-        <div className="flex items-center justify-center gap-3 rounded-full bg-pink-600 py-4 text-white shadow-2xl transition active:scale-95">
+        <div className="flex items-center bg-[var(--theme-primary)] justify-center gap-3 rounded-full  py-4 text-white shadow-2xl transition active:scale-95"
+        >
           <Calendar size={20} />
 
           <span className="font-semibold">

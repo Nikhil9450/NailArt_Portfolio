@@ -30,7 +30,7 @@ export default function LoginForm() {
         }
     };
   return (
-    <div className="w-full max-w-md rounded-3xl bg-white p-10 shadow-xl">
+    <div className="w-full max-w-md rounded-[var(--theme-radius)] bg-white p-10 shadow-xl">
       <h1 className="text-center text-3xl font-bold">
         Admin Login
       </h1>

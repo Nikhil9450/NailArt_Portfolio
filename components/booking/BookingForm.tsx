@@ -103,7 +103,8 @@ const onSubmit = async (data: BookingSchema) => {
 
     {/* Summary */}
     <div className="w-full lg:order-2">
-      <div className="w-full rounded-3xl bg-pink-600 p-5 text-white shadow-xl lg:sticky lg:top-28 lg:p-8">
+      <div className="w-full rounded-[var(--theme-radius)] p-5 bg-[var(--theme-primary)] text-white shadow-xl lg:sticky lg:top-28 lg:p-8"
+      >
         <h3 className="mb-5 text-xl font-bold lg:text-2xl">
           Booking Summary
         </h3>
@@ -164,7 +165,7 @@ const onSubmit = async (data: BookingSchema) => {
     <div className="w-full lg:order-1">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="rounded-3xl bg-white p-5 shadow-xl sm:p-6 lg:p-8"
+        className="rounded-[var(--theme-radius)] bg-white p-5 shadow-xl sm:p-6 lg:p-8"
       >
         <div className="rounded-2xl border border-gray-100 p-5">
         <ServiceSelect
@@ -206,7 +207,6 @@ const onSubmit = async (data: BookingSchema) => {
             h-14
             w-full
             rounded-full
-            bg-pink-600
             text-base
             font-semibold
             shadow-lg
@@ -215,6 +215,7 @@ const onSubmit = async (data: BookingSchema) => {
             hover:bg-pink-700
             hover:shadow-xl
             active:scale-95
+            bg-[var(--theme-primary)]
           "
         >
           {loading ? "Booking..." : "Book Appointment"}

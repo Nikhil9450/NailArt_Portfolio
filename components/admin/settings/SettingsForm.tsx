@@ -446,7 +446,10 @@ lg:grid-cols-3">
         <button
           onClick={onSave}
           disabled={loading}
-          className="rounded-xl bg-pink-600 px-6 py-3 text-white hover:bg-pink-700 disabled:opacity-50"
+          className="rounded-xl  px-6 py-3 text-white hover:bg-pink-700 disabled:opacity-50"
+          style={{
+            background: "var(--primary)"
+          }}
         >
           {loading ? "Saving..." : "Save Changes"}
         </button>

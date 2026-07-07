@@ -57,7 +57,7 @@ export default function DateSelector({
           open={open}
           onOpenChange={setOpen}
         >
-          <DialogContent className="max-w-sm rounded-3xl">
+          <DialogContent className="max-w-sm rounded-[var(--theme-radius)]">
             <DialogHeader>
               <DialogTitle>
                 Choose Appointment Date

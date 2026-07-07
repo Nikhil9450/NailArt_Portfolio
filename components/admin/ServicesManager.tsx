@@ -67,7 +67,8 @@ export default function ServicesManager() {
 
           <button
             onClick={() => setAddOpen(true)}
-             className="self-start rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700 md:self-auto" >
+             className="self-start rounded-xl  px-5 py-3 bg-[var(--theme-primary)] text-white hover:bg-pink-700 md:self-auto" 
+             >
             + Add Service
           </button>
         </div>

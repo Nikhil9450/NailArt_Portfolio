@@ -71,7 +71,7 @@ export default function GalleryManager() {
 
           <button
             onClick={() => setAddOpen(true)}
-            className="rounded-xl bg-pink-600 px-5 py-3 text-white transition hover:bg-pink-700"
+            className="rounded-xl bg-[var(--theme-primary)]  px-5 py-3 text-white transition hover:bg-pink-700"
           >
             + Add Image
           </button>

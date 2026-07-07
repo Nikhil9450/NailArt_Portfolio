@@ -27,7 +27,7 @@ export default function AboutContent({
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-600">
+      <span className="rounded-full bg-[var(--theme-secondary)] px-4 py-2 text-sm font-medium text-pink-600">
         About Me
       </span>
 
@@ -35,7 +35,7 @@ export default function AboutContent({
         {settings.aboutTitle || "Luxury Nail Artist"}
       </h2>
 
-      <p className="mt-4 text-base leading-7 text-gray-600 md:mt-6 md:text-lg md:leading-8">
+      <p className="mt-4 text-base leading-7 text-[var(--theme-muted)] md:mt-6 md:text-lg md:leading-8">
         {settings.aboutDescription ||
           "Creating elegant nail designs that enhance confidence and beauty. Every client receives personalized attention and premium-quality nail care."}
       </p>

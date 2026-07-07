@@ -25,14 +25,14 @@ export default function RecentBookings({
   };
 
   return (
-    <div className="mt-8 rounded-3xl bg-white p-4 shadow-sm md:mt-10 md:p-6">
+    <div className="mt-8 rounded-[var(--theme-radius)] bg-white p-4 shadow-sm md:mt-10 md:p-6">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-lg font-bold md:text-2xl">
           Recent Bookings
         </h2>
 
-        <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-medium text-pink-600 md:px-4 md:py-2 md:text-sm">
+        <span className="rounded-full bg-[var(--theme-secondary)] px-3 py-1 text-xs font-medium text-pink-600 md:px-4 md:py-2 md:text-sm">
           {recentBookings.length} Recent
         </span>
       </div>

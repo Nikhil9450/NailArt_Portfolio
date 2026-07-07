@@ -164,3 +164,24 @@ body {
 .gallery-grid-column > div {
   margin-bottom: 12px;
 }
+
+/* ===============================
+   Website Theme Variables
+=================================*/
+
+:root {
+  --theme-primary: #ec4899;
+  --theme-secondary: #fff1f6;
+  --theme-accent: #f472b6;
+
+  --theme-background: #ffffff;
+  --theme-surface: #ffffff;
+
+  --theme-text: #111827;
+  --theme-muted: #6b7280;
+
+  --theme-radius: 24px;
+
+  --theme-heading-font: "Playfair Display";
+  --theme-body-font: "Poppins";
+}

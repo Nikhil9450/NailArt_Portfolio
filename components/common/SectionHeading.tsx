@@ -18,7 +18,7 @@ export default function SectionHeading({
       }`}
     >
       {badge && (
-        <span className="inline-flex rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-600">
+        <span className="inline-flex rounded-full bg-[var(--theme-secondary)] px-4 py-2 text-sm font-medium text-pink-600">
           {badge}
         </span>
       )}
@@ -27,7 +27,7 @@ export default function SectionHeading({
         {title}
       </h2>
 
-      <p className="mt-6 text-lg text-gray-600">
+      <p className="mt-6 text-lg text-[var(--theme-muted)]">
         {subtitle}
       </p>
     </div>

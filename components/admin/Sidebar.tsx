@@ -107,7 +107,7 @@ export default function Sidebar({
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 transition ${
                   pathname === item.href
                     ? "bg-pink-600 text-white"
-                    : "hover:bg-pink-100"
+                    : "hover:bg-[var(--theme-secondary)]"
                 }`}
               >
                 <Icon size={20} />

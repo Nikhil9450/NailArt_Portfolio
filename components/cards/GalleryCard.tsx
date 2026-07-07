@@ -28,9 +28,9 @@ const aspectRatio =
         scale: 1.02,
       }}
       transition={{ duration: 0.3 }}
-      className="group cursor-pointer overflow-hidden rounded-3xl"
+      className="group cursor-pointer overflow-hidden rounded-[var(--theme-radius)]"
     >
-      <div className={`relative overflow-hidden rounded-3xl`} style={{ aspectRatio }}>
+      <div className={`relative overflow-hidden rounded-[var(--theme-radius)]`} style={{ aspectRatio }}>
 
       <Image
         src={item.image}

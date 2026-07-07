@@ -25,7 +25,7 @@ export default function BookingSuccessDialog({
       <DialogContent className="w-[95vw] max-w-xl max-h-[90vh] overflow-y-auto">
 
         <DialogHeader>
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-pink-100">
+          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--theme-secondary)]">
             <CheckCircle2
               size={48}
               className="text-pink-600"

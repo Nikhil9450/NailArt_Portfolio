@@ -20,7 +20,7 @@ export default function HeroContent({
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-600">
+      <span className="rounded-full bg-[var(--theme-secondary)] px-4 py-2 text-sm font-medium text-pink-600">
         ✨ Luxury Nail Artist
       </span>
 
@@ -34,7 +34,7 @@ export default function HeroContent({
         )}
       </h1>
 
-      <p className="mt-6 max-w-lg text-lg text-gray-600">
+      <p className="mt-6 max-w-lg text-lg text-[var(--theme-muted)]">
         {settings.heroSubtitle ||
           "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
       </p>
