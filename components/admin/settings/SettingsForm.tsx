@@ -5,6 +5,13 @@ import { validateImage } from "@/lib/imageValidation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { themePresets } from "@/constants/themePresets";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 interface SettingsFormProps {
   settings: Settings;
   setSettings: React.Dispatch<React.SetStateAction<Settings | null>>;
@@ -694,80 +701,143 @@ sm:text-base
             Theme Preset
         </h3>
 
-        <select
-            value={settings.preset}
-            onChange={(e) => {
+<div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+  {themePresets.map((preset) => {
+    const active = settings.preset === preset.name;
 
-                const preset = themePresets.find(
-                    t => t.name === e.target.value
-                );
+    return (
+      <button
+        key={preset.name}
+        type="button"
+        onClick={() =>
+          setSettings((prev) =>
+            prev
+              ? {
+                  ...prev,
 
-                if (!preset) return;
+                  preset: preset.name,
 
-                setSettings(prev =>
-                    prev
-                        ? {
-                            ...prev,
+                  primaryColor: preset.primaryColor,
+                  secondaryColor: preset.secondaryColor,
+                  accentColor: preset.accentColor,
 
-                            preset: preset.name,
+                  backgroundColor:
+                    preset.backgroundColor,
+                  surfaceColor:
+                    preset.surfaceColor,
 
-                            primaryColor: preset.primaryColor,
-                            secondaryColor: preset.secondaryColor,
-                            accentColor: preset.accentColor,
+                  textColor: preset.textColor,
+                  mutedColor: preset.mutedColor,
+                }
+              : prev
+          )
+        }
+        className={`
+            relative
+            rounded-theme
+            border
+            bg-theme-surface
+            p-4
+            shadow-sm
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:shadow-lg
 
-                            backgroundColor: preset.backgroundColor,
-                            surfaceColor: preset.surfaceColor,
+          ${
+           active
+            ? "border-theme ring-2 ring-theme bg-theme-secondary"
+            : "border-gray-200"
+          }
+        `}
+      >
+        {/* Selected */}
+        {active && (
+          <div className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-theme text-xs text-white">
+            ✓
+          </div>
+        )}
 
-                            textColor: preset.textColor,
-                            mutedColor: preset.mutedColor,
-                        }
-                        : prev
-                );
-            }}
-                        className="
-                        w-full
-                        rounded-theme
-                        border
-                        bg-theme-surface
-                        px-4
-                        py-3
-                        text-theme
-                        "        >
+        <h4 className="text-sm font-semibold text-theme">
+          {preset.name}
+        </h4>
 
-            {themePresets.map((preset) => (
-                <option
-                    key={preset.name}
-                    value={preset.name}
-                >
-                    {preset.name}
-                </option>
-            ))}
+        {/* Color Palette */}
+<div className="mt-4 flex justify-between">
+  {[
+    {
+      label: "PRI",
+      color: preset.primaryColor,
+    },
+    {
+      label: "SEC",
+      color: preset.secondaryColor,
+    },
+    {
+      label: "ACC",
+      color: preset.accentColor,
+    },
+    {
+      label: "BGD",
+      color: preset.backgroundColor,
+    },
+  ].map((item) => (
+    <div
+      key={item.label}
+      className="flex flex-col items-center gap-1"
+    >
+      <div
+        className="h-7 w-7 rounded-full border border-gray-200 shadow-sm"
+        style={{
+          backgroundColor: item.color,
+        }}
+      />
 
-        </select>
+      <span className="text-[10px] font-semibold uppercase tracking-wide text-theme-muted">
+        {item.label}
+      </span>
+    </div>
+  ))}
+</div>
+      </button>
+    );
+  })}
+</div>
 
-        {/* Colors */}
+      {/* Colors */}
         <div className="mt-6 rounded-theme border p-5">
-        <h3 className="mb-3 text-base font-semibold text-theme sm:mb-4 sm:text-lg">
+        <h3 className="mb-4 text-base font-semibold text-theme sm:text-lg">
             Theme Colors
         </h3>
 
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
 
             {[
-            ["Primary Color", "primaryColor"],
-            ["Secondary Color", "secondaryColor"],
-            ["Accent Color", "accentColor"],
+            ["Primary", "primaryColor"],
+            ["Secondary", "secondaryColor"],
+            ["Accent", "accentColor"],
             ["Background", "backgroundColor"],
             ["Surface", "surfaceColor"],
             ["Text", "textColor"],
             ["Muted", "mutedColor"],
             ].map(([label, key]) => (
-            <div key={key}>
-                <label className="mb-2 block text-sm font-medium text-theme">
+            <div
+                key={key}
+                className="
+                rounded-theme
+                border
+                border-gray-200
+                bg-theme-surface
+                px-3
+                py-4
+                shadow-sm
+                "
+            >
+                <label className="mb-3 block text-xs font-semibold text-theme">
                 {label}
                 </label>
 
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <div className="flex flex-col items-center gap-3">
 
                 <input
                     type="color"
@@ -783,14 +853,13 @@ sm:text-base
                     )
                     }
                     className="
-                    h-12
-                    w-full
+                    h-14
+                    w-14
                     cursor-pointer
-                    rounded-xl
-                    border
-                    sm:w-14
-                    "                
-                    />
+                    border-none
+                    p-0
+                    "
+                />
 
                 <input
                     value={settings[key as keyof Settings] as string}
@@ -806,10 +875,19 @@ sm:text-base
                     }
                     className="
                     w-full
-                    rounded-theme
+                    rounded-full
                     border
-                    px-4
-                    py-3
+                    border-gray-200
+                    bg-theme-surface
+                    px-3
+                    py-2
+                    text-center
+                    font-mono
+                    text-xs
+                    uppercase
+                    text-theme
+                    focus:border-theme
+                    focus:outline-none
                     "
                 />
 
@@ -818,7 +896,6 @@ sm:text-base
             ))}
 
         </div>
-
         </div>
 
         {/* Fonts */}

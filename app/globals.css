@@ -241,4 +241,29 @@ h6 {
   .shadow-theme {
     box-shadow: 0 10px 25px rgb(0 0 0 / 0.08);
   }
+
+  /* Chrome / Edge / Safari */
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 9999px;
+}
+
+/* Firefox */
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 9999px;
+}
 }
