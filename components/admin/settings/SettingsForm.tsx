@@ -714,18 +714,12 @@ sm:text-base
             prev
               ? {
                   ...prev,
-
                   preset: preset.name,
-
                   primaryColor: preset.primaryColor,
                   secondaryColor: preset.secondaryColor,
                   accentColor: preset.accentColor,
-
-                  backgroundColor:
-                    preset.backgroundColor,
-                  surfaceColor:
-                    preset.surfaceColor,
-
+                  backgroundColor: preset.backgroundColor,
+                  surfaceColor: preset.surfaceColor,
                   textColor: preset.textColor,
                   mutedColor: preset.mutedColor,
                 }
