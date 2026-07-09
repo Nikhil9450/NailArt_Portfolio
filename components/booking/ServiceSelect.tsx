@@ -20,6 +20,7 @@ export default function ServiceSelect({
   value,
   onChange,
 }: ServiceSelectProps) {
+  console.log("ServiceSelect services:", services);
   return (
     <div>
       <label className="mb-2 block text-sm font-medium text-gray-700">
@@ -38,7 +39,7 @@ export default function ServiceSelect({
           {services.map((service) => (
             <SelectItem
               key={service._id}
-              value={service.title}
+              value={service._id!}
             >
               {service.title} • ₹{service.price}
             </SelectItem>

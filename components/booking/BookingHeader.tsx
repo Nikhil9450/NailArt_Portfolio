@@ -12,7 +12,7 @@ export default function BookingHeader() {
           Let's Create Your Dream Nails
         </h1>
 
-        <p className="mt-6 text-lg text-[var(--theme-muted)]">
+        <p className="mt-6 text-lg text-theme-muted">
           Choose your service, preferred date, and time. We'll confirm your appointment shortly.
         </p>
       </div>

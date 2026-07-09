@@ -22,7 +22,7 @@ export default function SelectedServiceCard({
   }
 
   return (
-  <div className="mt-5 w-full overflow-hidden rounded-2xl bg-white text-gray-900 shadow-lg">
+  <div className="mt-5 w-full overflow-hidden rounded-2xl bg-theme-surface text-gray-900 shadow-lg">
     <div className="flex">
       <div className="relative h-24 w-24 shrink-0 sm:h-32 sm:w-32">        
         <Image
@@ -45,7 +45,7 @@ export default function SelectedServiceCard({
         </div>
 
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-          <span className="rounded-full bg-[var(--theme-secondary)] px-3 py-1 text-xs font-medium text-pink-600">
+          <span className="rounded-full bg-theme-secondary px-3 py-1 text-xs font-medium text-theme-primary">
             ₹{service.price}
           </span>
 

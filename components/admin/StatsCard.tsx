@@ -60,7 +60,7 @@ export default function StatsCards({
         return (
           <div
             key={stat.title}
-            className="rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:rounded-theme md:p-6"
+            className="rounded-2xl bg-theme-surface p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:rounded-theme md:p-6"
           >
             <div className="flex items-center justify-between">
               <div className="min-w-0">
@@ -73,9 +73,9 @@ export default function StatsCards({
                 </h2>
               </div>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--theme-secondary)] md:h-14 md:w-14 md:rounded-2xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-theme-secondary md:h-14 md:w-14 md:rounded-2xl">
                 <Icon
-                  className="text-pink-600"
+                  className="text-theme-primary"
                   size={20}
                 />
               </div>

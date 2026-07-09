@@ -34,7 +34,7 @@ const trustItems = [
 
 export default function Trust() {
   return (
-    <section className="bg-white py-12 md:py-16">
+    <section className="bg-theme-surface py-12 md:py-16">
       <Container>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {trustItems.map((item, index) => {
@@ -58,7 +58,7 @@ export default function Trust() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="rounded-2xl border bg-white p-4 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl md:rounded-theme md:p-6"
+                className="rounded-2xl border bg-theme-surface p-4 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl md:rounded-theme md:p-6"
               >
                 <Icon className="mx-auto mb-3 h-6 w-6 text-pink-500 md:mb-4 md:h-8 md:w-8" />
 

@@ -87,7 +87,7 @@ export default function ComparisonSlider({
 
       {/* Divider */}
       <div
-        className="absolute top-0 h-full w-1 -translate-x-1/2 bg-white shadow-lg"
+        className="absolute top-0 h-full w-1 -translate-x-1/2 bg-theme-surface shadow-lg"
         style={{
           left: `${sliderPosition}%`,
         }}
@@ -100,7 +100,7 @@ export default function ComparisonSlider({
         }}
         onMouseDown={() => setIsDragging(true)}
         onTouchStart={() => setIsDragging(true)}
-        className="absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-xl md:h-12 md:w-12"
+        className="absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-theme-surface shadow-xl md:h-12 md:w-12"
       >
         <MoveHorizontal className="h-5 w-5 text-pink-500 md:h-6 md:w-6" />
       </div>

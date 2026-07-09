@@ -17,7 +17,7 @@ export default function GalleryTable({
 }: GalleryTableProps) {
   if (images.length === 0) {
     return (
-      <div className="rounded-theme bg-white p-10 text-center shadow-sm">
+      <div className="rounded-theme bg-theme-surface p-10 text-center shadow-sm">
         No gallery images found.
       </div>
     );
@@ -28,7 +28,7 @@ export default function GalleryTable({
       {images.map((image) => (
         <div
           key={image._id}
-          className="overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+          className="overflow-hidden rounded-2xl bg-theme-surface shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
         >
           {/* Image */}
           <div className="relative aspect-square">

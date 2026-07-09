@@ -39,7 +39,7 @@ export default function DashboardHeader({
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b bg-white">
+    <header className="sticky top-0 z-30 border-b bg-theme-surface">
       <div className="flex items-center justify-between px-4 py-4 md:px-8">
 
         <div className="flex items-center gap-4">
@@ -65,7 +65,7 @@ export default function DashboardHeader({
 
         <div className="flex items-center gap-3">
 
-          <div className="hidden items-center gap-2 rounded-xl border bg-white px-4 py-2 shadow-sm md:flex">
+          <div className="hidden items-center gap-2 rounded-xl border bg-theme-surface px-4 py-2 shadow-sm md:flex">
             <CalendarDays size={18} />
             <span>{today}</span>
           </div>

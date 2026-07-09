@@ -83,7 +83,7 @@ export default function Sidebar({
         `}
       >
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-3xl font-bold text-pink-600">
+          <h2 className="text-3xl font-bold text-theme-primary">
             Nail Studio
           </h2>
 
@@ -107,7 +107,7 @@ export default function Sidebar({
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 transition ${
                   pathname === item.href
                     ? "bg-theme text-white"
-                    : "hover:bg-[var(--theme-secondary)]"
+                    : "hover:bg-theme-secondary"
                 }`}
               >
                 <Icon size={20} />

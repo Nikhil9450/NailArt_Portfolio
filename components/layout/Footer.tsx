@@ -25,7 +25,7 @@ export default async function Footer() {
                 href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-pink-600"
+                className="hover:text-theme-primary"
               >
                 Instagram
               </a>
@@ -36,7 +36,7 @@ export default async function Footer() {
                 href={settings.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-pink-600"
+                className="hover:text-theme-primary"
               >
                 Facebook
               </a>
@@ -47,7 +47,7 @@ export default async function Footer() {
                 href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-pink-600"
+                className="hover:text-theme-primary"
               >
                 WhatsApp
               </a>

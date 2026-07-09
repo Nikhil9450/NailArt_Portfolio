@@ -20,7 +20,7 @@ export default function HeroContent({
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <span className="rounded-full bg-[var(--theme-secondary)] px-4 py-2 text-sm font-medium text-pink-600">
+      <span className="rounded-full bg-theme-secondary px-4 py-2 text-sm font-medium text-theme-primary">
         ✨ Luxury Nail Artist
       </span>
 
@@ -34,13 +34,13 @@ export default function HeroContent({
         )}
       </h1>
 
-      <p className="mt-6 max-w-lg text-lg text-[var(--theme-muted)]">
+      <p className="mt-6 max-w-lg text-lg text-theme-muted">
         {settings.heroSubtitle ||
           "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4">
-        <Link href="/book">
+        <Link href="/booking">
           <Button size="lg">
             Book Appointment
           </Button>

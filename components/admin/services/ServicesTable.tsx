@@ -17,7 +17,7 @@ export default function ServicesTable({
 }: ServicesTableProps) {
   if (services.length === 0) {
     return (
-      <div className="rounded-theme bg-white p-10 text-center shadow-sm">
+      <div className="rounded-theme bg-theme-surface p-10 text-center shadow-sm">
         No services found.
       </div>
     );
@@ -30,7 +30,7 @@ export default function ServicesTable({
   {services.map((service) => (
     <div
       key={service._id}
-      className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+      className="rounded-2xl border border-gray-200 bg-theme-surface p-3 shadow-sm transition hover:shadow-md"
     >
       <div className="flex gap-3">
         {/* Image */}
@@ -75,7 +75,7 @@ export default function ServicesTable({
 
           {/* Chips */}
           <div className="mt-3 flex flex-wrap gap-2">
-            <span className="rounded-full bg-[var(--theme-secondary)] px-2.5 py-1 text-xs font-medium text-pink-600">
+            <span className="rounded-full bg-theme-secondary px-2.5 py-1 text-xs font-medium text-theme-primary">
               ₹{service.price}
             </span>
 
@@ -94,7 +94,7 @@ export default function ServicesTable({
 </div>
 
       {/* ================= DESKTOP ================= */}
-      <div className="hidden md:block w-full overflow-x-auto rounded-xl border bg-white">
+      <div className="hidden md:block w-full overflow-x-auto rounded-xl border bg-theme-surface">
         <table className="min-w-[850px] w-full">
           <thead>
             <tr className="border-b">

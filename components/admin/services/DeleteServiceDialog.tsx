@@ -66,7 +66,7 @@ export default function DeleteServiceDialog({
           </DialogTitle>
         </DialogHeader>
 
-        <p className="text-[var(--theme-muted)]">
+        <p className="text-theme-muted">
           Are you sure you want to delete
           <span className="font-semibold">
             {" "}

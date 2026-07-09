@@ -9,7 +9,7 @@ export default function SectionSubtitle({
 }: SectionSubtitleProps) {
   return (
     <p
-      className={`mt-5 max-w-2xl text-lg text-[var(--theme-muted)] ${
+      className={`mt-5 max-w-2xl text-lg text-theme-muted ${
         center ? "mx-auto text-center" : ""
       }`}
     >

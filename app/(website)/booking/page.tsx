@@ -1,11 +1,14 @@
 import BookingHeader from "@/components/booking/BookingHeader";
 import BookingForm from "@/components/booking/BookingForm";
+import { getServicesFromDB } from "@/lib/server/services";
 
-export default function BookingPage() {
+export default async function BookingPage() {
+  const services = await getServicesFromDB();
+  console.log("Services:", services);
   return (
-    <main className="min-h-screen bg-[#FFF8F5] py-10 lg:py-24">
+    <main className="min-h-screen bg-[#FFF8F5] py-24">
       <BookingHeader />
-      <BookingForm />
+      <BookingForm services={services} />
     </main>
   );
 }

@@ -2,7 +2,7 @@
 
 import { Gallery } from "@/types/gallery";
 import { deleteGallery } from "@/lib/api/gallery";
-
+import { toast } from "sonner";
 interface DeleteGalleryDialogProps {
   open: boolean;
   image: Gallery | null;
@@ -32,12 +32,12 @@ export default function DeleteGalleryDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="w-full max-w-md rounded-theme bg-white p-8 shadow-xl">
+      <div className="w-full max-w-md rounded-theme bg-theme-surface p-8 shadow-xl">
         <h2 className="text-2xl font-bold">
           Delete Image
         </h2>
 
-        <p className="mt-4 text-[var(--theme-muted)]">
+        <p className="mt-4 text-theme-muted">
           Are you sure you want to delete
           <span className="font-semibold">
             {" "}

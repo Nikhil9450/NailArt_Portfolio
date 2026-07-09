@@ -25,7 +25,7 @@ const buttonVariants = cva(
           text-white
           backdrop-blur-md
           hover:bg-white
-          hover:text-pink-600
+          hover:text-theme-primary
         `,
       },
       size: {

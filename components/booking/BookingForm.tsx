@@ -13,15 +13,22 @@ import TimeSelector from "./TimeSelector";
 import DateSelector from "./DateSelector";
 import CustomerDetails from "./CustomerDetails";
 import SelectedServiceCard from "./selectedServiceCard";
-import { services } from "@/data/services";
+// import { services } from "@/data/services";
 import { timeSlots } from "@/data/timeSlots";
 import BookingSuccessDialog from "./BookingSuccessDialog";
+import { Service } from "@/types/service";
 import {
   bookingSchema,
   BookingSchema,
 } from "@/lib/validations/bookingSchema";
 
-export default function BookingForm() {
+interface BookingFormProps {
+  services: Service[];
+}
+
+export default function BookingForm({
+  services,
+}: BookingFormProps) {
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
@@ -64,8 +71,8 @@ export default function BookingForm() {
       setValue("service", selectedServiceFromURL);
     }
   }, [selectedServiceFromURL, setValue]);
-const selectedService = services.find(
-  (service) => service.title === watch("service")
+const selectedService = services?.find(
+  (service) => service._id === watch("service")
 );
 const onSubmit = async (data: BookingSchema) => {
   if (!selectedService) return;
@@ -75,10 +82,15 @@ const onSubmit = async (data: BookingSchema) => {
 
     const booking = {
       ...data,
-      date: selectedDate,
-      time: selectedTime,
+
+      serviceId: selectedService._id,
+      service: selectedService.title,
+
       price: selectedService.price,
       duration: selectedService.duration,
+
+      date: selectedDate,
+      time: selectedTime,
     };
 
     console.log("Booking:", booking);
@@ -97,13 +109,14 @@ const onSubmit = async (data: BookingSchema) => {
     setLoading(false);
   }
 };
+console.log("BookingForm services:", services);
   return (
 <Container>
   <div className="mx-auto mt-8 flex w-full flex-col gap-6 lg:mt-14 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-10">
 
     {/* Summary */}
     <div className="w-full lg:order-2">
-      <div className="w-full rounded-theme p-5 bg-[var(--theme-primary)] text-white shadow-xl lg:sticky lg:top-28 lg:p-8"
+      <div className="w-full rounded-theme p-5 bg-theme text-white shadow-xl lg:sticky lg:top-28 lg:p-8"
       >
         <h3 className="mb-5 text-xl font-bold lg:text-2xl">
           Booking Summary
@@ -165,7 +178,7 @@ const onSubmit = async (data: BookingSchema) => {
     <div className="w-full lg:order-1">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="rounded-theme bg-white p-5 shadow-xl sm:p-6 lg:p-8"
+        className="rounded-theme bg-theme-surface p-5 shadow-xl sm:p-6 lg:p-8"
       >
         <div className="rounded-2xl border border-gray-100 p-5">
         <ServiceSelect
@@ -215,7 +228,7 @@ const onSubmit = async (data: BookingSchema) => {
             hover:bg-pink-700
             hover:shadow-xl
             active:scale-95
-            bg-[var(--theme-primary)]
+            bg-theme
           "
         >
           {loading ? "Booking..." : "Book Appointment"}

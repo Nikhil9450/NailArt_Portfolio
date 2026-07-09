@@ -11,7 +11,7 @@ export default function FloatingCard({
 }: FloatingCardProps) {
   return (
     <div
-      className={`rounded-2xl border border-white/30 bg-white/80 p-4 shadow-xl backdrop-blur-md ${className}`}
+      className={`rounded-2xl border border-white/30 bg-theme-surface/80 p-4 shadow-xl backdrop-blur-md ${className}`}
     >
       {children}
     </div>

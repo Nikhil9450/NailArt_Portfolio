@@ -8,7 +8,7 @@ export default function HeroStats() {
           key={item.label}
           className="rounded-2xl border bg-white p-5 text-center shadow-sm"
         >
-          <h3 className="text-2xl font-bold text-pink-600 md:text-3xl">
+          <h3 className="text-2xl font-bold text-theme-primary md:text-3xl">
             {item.number}
           </h3>
 

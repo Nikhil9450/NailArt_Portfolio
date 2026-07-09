@@ -41,7 +41,7 @@ export default function CustomerDetails({
           px-4
           transition-all
           focus:border-pink-500
-          focus:bg-white
+          focus:bg-theme-surface
           focus:ring-4
           focus:ring-pink-100
           focus:outline-none
@@ -73,7 +73,7 @@ px-4
 py-3
 transition-all
 focus:border-pink-500
-focus:bg-white
+focus:bg-theme-surface
 focus:ring-4
 focus:ring-pink-100
 focus:outline-none
@@ -105,7 +105,7 @@ px-4
 py-3
 transition-all
 focus:border-pink-500
-focus:bg-white
+focus:bg-theme-surface
 focus:ring-4
 focus:ring-pink-100
 focus:outline-none
@@ -132,7 +132,7 @@ px-4
 py-3
 transition-all
 focus:border-pink-500
-focus:bg-white
+focus:bg-theme-surface
 focus:ring-4
 focus:ring-pink-100
 focus:outline-none

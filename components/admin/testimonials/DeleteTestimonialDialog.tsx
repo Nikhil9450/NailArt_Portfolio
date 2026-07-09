@@ -63,7 +63,7 @@ export default function DeleteTestimonialDialog({
           </DialogTitle>
         </DialogHeader>
 
-        <p className="text-[var(--theme-muted)]">
+        <p className="text-theme-muted">
           Are you sure you want to delete the testimonial from
           <span className="font-semibold">
             {" "}

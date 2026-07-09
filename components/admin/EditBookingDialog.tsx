@@ -48,7 +48,7 @@ export default function EditBookingDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-full max-w-lg rounded-theme bg-white p-8 shadow-2xl">
+      <div className="w-full max-w-lg rounded-theme bg-theme-surface p-8 shadow-2xl">
         <h2 className="text-2xl font-bold">
           Edit Booking
         </h2>
@@ -108,7 +108,7 @@ export default function EditBookingDialog({
 
             <button
             onClick={handleSave}
-            className="rounded-xl px-5 py-2 text-white bg-[var(--theme-primary)]"
+            className="rounded-xl px-5 py-2 text-white bg-theme"
             >
             Save Changes
             </button>

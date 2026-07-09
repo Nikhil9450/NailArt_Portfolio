@@ -44,7 +44,7 @@ const aspectRatio =
 
         <div className="absolute bottom-0 left-0 right-0 translate-y-6 p-5 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
 
-          <span className="rounded-full bg-white/20 px-3 py-1 text-xs backdrop-blur">
+          <span className="rounded-full bg-theme-surface/20 px-3 py-1 text-xs backdrop-blur">
             {item.category}
           </span>
 
@@ -52,7 +52,7 @@ const aspectRatio =
             {item.title}
           </h3>
 
-          <div className="mt-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur group-hover:bg-pink-500">
+          <div className="mt-4 flex h-10 w-10 items-center justify-center rounded-full bg-theme-surface/20 backdrop-blur group-hover:bg-pink-500">
             <Eye size={18} />
           </div>
 

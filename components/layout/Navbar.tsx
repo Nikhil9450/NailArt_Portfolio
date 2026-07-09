@@ -35,7 +35,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b bg-theme-surface/90 backdrop-blur-md">
       <Container>
         <div className="flex h-18 md:h-20 items-center justify-between">
           <Logo />
@@ -46,7 +46,7 @@ export default function Navbar() {
               <Link
                 key={link.title}
                 href={link.href}
-                className="text-sm font-medium transition hover:text-pink-600"
+                className="text-sm font-medium transition hover:text-theme-primary"
               >
                 {link.title}
               </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:block">
-            <Link href="/book">
+            <Link href="/booking">
               <Button className="rounded-full px-6">
                 Book Appointment
               </Button>
@@ -103,7 +103,7 @@ export default function Navbar() {
                         key={link.title}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="flex items-center gap-4 rounded-xl px-4 py-4 text-base font-medium transition hover:bg-pink-50 hover:text-pink-600"
+                        className="flex items-center gap-4 rounded-xl px-4 py-4 text-base font-medium transition hover:bg-pink-50 hover:text-theme-primary"
                       >
                         <Icon size={20} />
 
@@ -117,7 +117,7 @@ export default function Navbar() {
               {/* Footer */}
               <div className="border-t p-5">
                 <Link
-                  href="/book"
+                  href="/booking"
                   onClick={() => setOpen(false)}
                 >
                   <Button className="w-full rounded-full">

@@ -22,7 +22,7 @@ export default function ServiceCard({
       transition={{
         duration: 0.3,
       }}
-      className="group overflow-hidden rounded-theme bg-white shadow-lg"
+      className="group overflow-hidden rounded-theme bg-theme-surface shadow-lg"
     >
       {/* Image */}
       <div className="relative h-44 overflow-hidden md:h-72">
@@ -37,7 +37,7 @@ export default function ServiceCard({
       {/* Content */}
       <div className="p-4 md:p-6">
         {/* Category */}
-        <span className="rounded-full bg-[var(--theme-secondary)] px-2.5 py-1 text-[10px] font-medium text-pink-600 md:px-3 md:text-xs">
+        <span className="rounded-full bg-theme-secondary px-2.5 py-1 text-[10px] font-medium text-theme-primary md:px-3 md:text-xs">
           {service.category}
         </span>
 
@@ -53,7 +53,7 @@ export default function ServiceCard({
 
         {/* Price + Duration */}
         <div className="mt-4 flex items-center justify-between md:mt-6">
-          <span className="text-xl font-bold text-pink-600 md:text-2xl">
+          <span className="text-xl font-bold text-theme-primary md:text-2xl">
             ₹{service.price}
           </span>
 

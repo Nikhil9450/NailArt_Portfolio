@@ -46,12 +46,12 @@ export default function BookingTable({
     }
     };
   return (
-    <div className="rounded-theme bg-white p-6 shadow-sm">
+    <div className="rounded-theme bg-theme-surface p-6 shadow-sm">
       <h2 className="mb-6 text-2xl font-bold">
         All Bookings
       </h2>
 
-      <div className="w-full overflow-x-auto rounded-xl border bg-white">
+      <div className="w-full overflow-x-auto rounded-xl border bg-theme-surface">
         <table className="min-w-[850px] w-full">
           <thead>
             <tr className="border-b">

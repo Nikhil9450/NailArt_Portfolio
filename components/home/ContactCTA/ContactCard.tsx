@@ -7,7 +7,7 @@ import { contactData } from "@/data/contact";
 
 export default function ContactCard() {
   return (
-    <div className="rounded-theme  p-8 text-white shadow-xl bg-[var(--theme-primary)]"
+    <div className="rounded-theme  p-8 text-white shadow-xl bg-theme"
     >
       <h3 className="text-3xl font-bold">
         Ready for Beautiful Nails?
@@ -20,7 +20,7 @@ export default function ContactCard() {
       <div className="mt-8 flex flex-col gap-4 sm:flex-row">
         <Button
           asChild
-          className="rounded-full bg-white text-pink-600 hover:bg-[var(--theme-secondary)]"
+          className="rounded-full bg-white text-theme-primary hover:bg-theme-secondary"
         >
           <Link href="/booking">
             <Calendar className="mr-2 h-4 w-4" />
