@@ -735,6 +735,11 @@ sm:text-base
 
                             textColor: preset.textColor,
                             mutedColor: preset.mutedColor,
+                            headingFont: preset.headingFont,
+                            bodyFont: preset.bodyFont,
+                            borderRadius: preset.borderRadius,
+                            buttonStyle: preset.buttonStyle,
+                            shadow: preset.shadow,
                             }
                         : prev
                     );
@@ -884,6 +889,8 @@ sm:text-base
   setSettings={setSettings}
   preset={selectedPreset}
   editable={selectedPreset?.editable ?? false}
+  onSave={onSave}
+    loading={loading}
 />
 
     </div>

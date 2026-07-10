@@ -1,6 +1,25 @@
 import { Settings } from "@/types/settings";
 
-export const themePresets = [
+export const themePresets: Array<
+  Pick<
+    Settings,
+    | "primaryColor"
+    | "secondaryColor"
+    | "accentColor"
+    | "backgroundColor"
+    | "surfaceColor"
+    | "textColor"
+    | "mutedColor"
+    | "headingFont"
+    | "bodyFont"
+    | "borderRadius"
+    | "buttonStyle"
+    | "shadow"
+  > & {
+    name: string;
+    editable: boolean;
+  }
+> = [
   {
     name: "Pink Luxury",
 
@@ -13,7 +32,17 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
-     editable: false,
+
+    headingFont: "Playfair Display",
+    bodyFont: "Poppins",
+
+    borderRadius: 24,
+
+    buttonStyle: "filled",
+
+    shadow: "medium",
+
+    editable: false,
   },
 
   {
@@ -28,7 +57,17 @@ export const themePresets = [
 
     textColor: "#1f2937",
     mutedColor: "#6b7280",
-     editable: false,
+
+    headingFont: "Cormorant Garamond",
+    bodyFont: "Inter",
+
+    borderRadius: 20,
+
+    buttonStyle: "soft",
+
+    shadow: "soft",
+
+    editable: false,
   },
 
   {
@@ -43,7 +82,17 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
-     editable: false,
+
+    headingFont: "Montserrat",
+    bodyFont: "Open Sans",
+
+    borderRadius: 18,
+
+    buttonStyle: "filled",
+
+    shadow: "medium",
+
+    editable: false,
   },
 
   {
@@ -58,7 +107,17 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
-     editable: false,
+
+    headingFont: "Inter",
+    bodyFont: "Inter",
+
+    borderRadius: 12,
+
+    buttonStyle: "outline",
+
+    shadow: "none",
+
+    editable: false,
   },
 
   {
@@ -73,30 +132,41 @@ export const themePresets = [
 
     textColor: "#fafafa",
     mutedColor: "#a1a1aa",
+
+    headingFont: "Playfair Display",
+    bodyFont: "Poppins",
+
+    borderRadius: 24,
+
+    buttonStyle: "filled",
+
+    shadow: "large",
+
     editable: false,
   },
+
   {
-  name: "Custom",
+    name: "Custom",
 
-  primaryColor: "#ec4899",
-  secondaryColor: "#fff1f6",
-  accentColor: "#f472b6",
+    primaryColor: "#ec4899",
+    secondaryColor: "#fff1f6",
+    accentColor: "#f472b6",
 
-  backgroundColor: "#ffffff",
-  surfaceColor: "#ffffff",
+    backgroundColor: "#ffffff",
+    surfaceColor: "#ffffff",
 
-  textColor: "#111827",
-  mutedColor: "#6b7280",
+    textColor: "#111827",
+    mutedColor: "#6b7280",
 
-  headingFont: "Playfair Display",
-  bodyFont: "Poppins",
+    headingFont: "Playfair Display",
+    bodyFont: "Poppins",
 
-  borderRadius: 24,
+    borderRadius: 24,
 
-  buttonStyle: "filled",
+    buttonStyle: "filled",
 
-  shadow: "medium",
+    shadow: "medium",
 
-  editable: true,
-}
+    editable: true,
+  },
 ];

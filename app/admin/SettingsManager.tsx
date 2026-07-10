@@ -11,9 +11,11 @@ import {
 } from "@/lib/api/settings";
 
 export default function SettingsManager() {
-  const [settings, setSettings] =
+  const [savedSettings, setSavedSettings] =
     useState<Settings | null>(null);
 
+  const [workingSettings, setWorkingSettings] =
+    useState<Settings | null>(null);
   const [loading, setLoading] =
     useState(false);
 
@@ -21,15 +23,16 @@ export default function SettingsManager() {
     loadSettings();
   }, []);
   const handleSave = async () => {
-  if (!settings) return;
+  if (!workingSettings) return;
 
   try {
     setLoading(true);
 
-    const updated = await updateSettings(settings);
-
-    setSettings(updated);
-
+    const updated = await updateSettings(
+      workingSettings!
+    );
+    setSavedSettings(updated);
+    setWorkingSettings(structuredClone(updated));
     toast.error("Settings saved successfully.");
   } catch (error) {
     console.error(error);
@@ -41,14 +44,17 @@ export default function SettingsManager() {
 
   async function loadSettings() {
     try {
-      const data = await getSettings();
-      setSettings(data);
+    const data = await getSettings();
+
+    setSavedSettings(data);
+
+    setWorkingSettings(structuredClone(data));
     } catch (error) {
       console.error(error);
     }
   }
 
-  if (!settings) {
+  if (!workingSettings) {
     return (
       <div className="py-20 text-center">
         Loading...
@@ -58,8 +64,8 @@ export default function SettingsManager() {
 
   return (
 <SettingsForm
-  settings={settings}
-  setSettings={setSettings}
+  settings={workingSettings}
+  setSettings={setWorkingSettings}
   loading={loading}
   onSave={handleSave}
 />

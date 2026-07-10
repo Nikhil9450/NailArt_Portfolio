@@ -1,7 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { connectDB } from "@/lib/mongodb";
 import Settings from "@/models/Settings";
 
 export async function getWebsiteSettings() {
+  noStore(); // ⭐ Disable caching
+
   await connectDB();
 
   let settings = await Settings.findOne().lean();

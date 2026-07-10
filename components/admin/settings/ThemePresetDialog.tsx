@@ -28,6 +28,9 @@ interface ThemePresetDialogProps {
   preset: (typeof themePresets)[number] | null;
 
   editable: boolean;
+
+  onSave: () => Promise<void>;
+  loading: boolean;
 }
 
 export default function ThemePresetDialog({
@@ -37,6 +40,8 @@ export default function ThemePresetDialog({
   setSettings,
   preset,
   editable,
+  onSave,
+  loading
 }: ThemePresetDialogProps) {
     const themeData = editable ? settings : preset;
   return (
@@ -246,7 +251,7 @@ export default function ThemePresetDialog({
                 />
 
                 <p className="mt-2 text-sm text-gray-500">
-                {settings.borderRadius}px
+                {themeData?.borderRadius ?? 24}px
                 </p>
 
             </div>
@@ -292,11 +297,16 @@ export default function ThemePresetDialog({
         </Button>
 
         {editable && (
-        <Button
+          <Button
+            disabled={loading}
             className="flex-1 bg-theme sm:flex-none"
-        >
-            Save Theme
-        </Button>
+            onClick={async () => {
+              await onSave();
+              onOpenChange(false);
+            }}
+          >
+            {loading ? "Saving..." : "Save Theme"}
+          </Button>
         )}
         </div>
       </DialogContent>
