@@ -5,6 +5,8 @@ import { validateImage } from "@/lib/imageValidation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { themePresets } from "@/constants/themePresets";
+import { useState } from "react";
+import ThemePresetDialog from "./ThemePresetDialog";
 import {
   Select,
   SelectContent,
@@ -12,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 interface SettingsFormProps {
   settings: Settings;
   setSettings: React.Dispatch<React.SetStateAction<Settings | null>>;
@@ -25,6 +28,11 @@ export default function SettingsForm({
   onSave,
   loading,
 }: SettingsFormProps) {
+    const [themeDialogOpen, setThemeDialogOpen] =
+    useState(false);
+
+    const [selectedPreset, setSelectedPreset] =
+    useState(themePresets[0]);
   return (
     <div className="space-y-10">
 
@@ -666,20 +674,20 @@ sm:text-base
                 )
                 }
                 className="
-w-full
-rounded-theme
-border
-border-gray-200
-bg-theme-surface
-px-4
-py-3
-text-sm
-text-theme
-placeholder:text-theme-muted
-focus:border-theme
-focus:outline-none
-sm:text-base
-"
+                    w-full
+                    rounded-theme
+                    border
+                    border-gray-200
+                    bg-theme-surface
+                    px-4
+                    py-3
+                    text-sm
+                    text-theme
+                    placeholder:text-theme-muted
+                    focus:border-theme
+                    focus:outline-none
+                    sm:text-base
+                    "
                 placeholder={`Monday - Friday
                     10:00 AM - 8:00 PM
 
@@ -701,354 +709,182 @@ sm:text-base
             Theme Preset
         </h3>
 
-<div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
-  {themePresets.map((preset) => {
-    const active = settings.preset === preset.name;
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+        {themePresets.map((preset) => {
+            const active = settings.preset === preset.name;
 
-    return (
-      <button
-        key={preset.name}
-        type="button"
-        onClick={() =>
-          setSettings((prev) =>
-            prev
-              ? {
-                  ...prev,
-                  preset: preset.name,
-                  primaryColor: preset.primaryColor,
-                  secondaryColor: preset.secondaryColor,
-                  accentColor: preset.accentColor,
-                  backgroundColor: preset.backgroundColor,
-                  surfaceColor: preset.surfaceColor,
-                  textColor: preset.textColor,
-                  mutedColor: preset.mutedColor,
-                }
-              : prev
-          )
-        }
-        className={`
-            relative
-            rounded-theme
-            border
-            bg-theme-surface
-            p-4
-            shadow-sm
-            transition-all
-            duration-300
-            hover:-translate-y-1
-            hover:shadow-lg
-
-          ${
-           active
-            ? "border-theme ring-2 ring-theme bg-theme-secondary"
-            : "border-gray-200"
-          }
-        `}
-      >
-        {/* Selected */}
-        {active && (
-          <div className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-theme text-xs text-white">
-            ✓
-          </div>
-        )}
-
-        <h4 className="text-sm font-semibold text-theme">
-          {preset.name}
-        </h4>
-
-        {/* Color Palette */}
-<div className="mt-4 flex justify-between">
-  {[
-    {
-      label: "PRI",
-      color: preset.primaryColor,
-    },
-    {
-      label: "SEC",
-      color: preset.secondaryColor,
-    },
-    {
-      label: "ACC",
-      color: preset.accentColor,
-    },
-    {
-      label: "BGD",
-      color: preset.backgroundColor,
-    },
-  ].map((item) => (
-    <div
-      key={item.label}
-      className="flex flex-col items-center gap-1"
-    >
-      <div
-        className="h-7 w-7 rounded-full border border-gray-200 shadow-sm"
-        style={{
-          backgroundColor: item.color,
-        }}
-      />
-
-      <span className="text-[10px] font-semibold uppercase tracking-wide text-theme-muted">
-        {item.label}
-      </span>
-    </div>
-  ))}
-</div>
-      </button>
-    );
-  })}
-</div>
-
-      {/* Colors */}
-        <div className="mt-6 rounded-theme border p-5">
-        <h3 className="mb-4 text-base font-semibold text-theme sm:text-lg">
-            Theme Colors
-        </h3>
-
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
-
-            {[
-            ["Primary", "primaryColor"],
-            ["Secondary", "secondaryColor"],
-            ["Accent", "accentColor"],
-            ["Background", "backgroundColor"],
-            ["Surface", "surfaceColor"],
-            ["Text", "textColor"],
-            ["Muted", "mutedColor"],
-            ].map(([label, key]) => (
+            return (
             <div
-                key={key}
-                className="
+                key={preset.name}
+                    onClick={() => {
+                    // setSelectedPreset(preset);
+
+                    setSettings((prev) =>
+                        prev
+                        ? {
+                            ...prev,
+
+                            preset: preset.name,
+
+                            primaryColor: preset.primaryColor,
+                            secondaryColor: preset.secondaryColor,
+                            accentColor: preset.accentColor,
+
+                            backgroundColor: preset.backgroundColor,
+                            surfaceColor: preset.surfaceColor,
+
+                            textColor: preset.textColor,
+                            mutedColor: preset.mutedColor,
+                            }
+                        : prev
+                    );
+                    }}
+                className={`
+                relative
+                cursor-pointer
                 rounded-theme
                 border
-                border-gray-200
                 bg-theme-surface
-                px-3
-                py-4
+                p-4
                 shadow-sm
-                "
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
+
+                ${
+                    active
+                    ? "border-theme ring-2 ring-theme bg-theme-secondary"
+                    : "border-gray-200"
+                }
+                `}
             >
-                <label className="mb-3 block text-xs font-semibold text-theme">
-                {label}
-                </label>
+                {/* Selected Badge */}
 
-                <div className="flex flex-col items-center gap-3">
+                {active && (
+                <div className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-theme text-xs font-bold text-white">
+                    ✓
+                </div>
+                )}
 
-                <input
-                    type="color"
-                    value={settings[key as keyof Settings] as string}
-                    onChange={(e) =>
-                    setSettings((prev) =>
-                        prev
-                        ? {
-                            ...prev,
-                            [key]: e.target.value,
-                            }
-                        : prev
-                    )
-                    }
-                    className="
-                    h-14
-                    w-14
-                    cursor-pointer
-                    border-none
-                    p-0
-                    "
-                />
+                {/* Name */}
 
-                <input
-                    value={settings[key as keyof Settings] as string}
-                    onChange={(e) =>
-                    setSettings((prev) =>
-                        prev
-                        ? {
-                            ...prev,
-                            [key]: e.target.value,
-                            }
-                        : prev
-                    )
-                    }
-                    className="
+                <h4 className="text-sm font-semibold text-theme">
+                {preset.name}
+                </h4>
+
+                {/* Swatches */}
+
+                <div className="mt-4 flex justify-between">
+                {[
+                    {
+                    label: "PRI",
+                    color: preset.primaryColor,
+                    },
+                    {
+                    label: "SEC",
+                    color: preset.secondaryColor,
+                    },
+                    {
+                    label: "ACC",
+                    color: preset.accentColor,
+                    },
+                    {
+                    label: "BGD",
+                    color: preset.backgroundColor,
+                    },
+                ].map((item) => (
+                    <div
+                    key={item.label}
+                    className="flex flex-col items-center gap-1"
+                    >
+                    <div
+                        className="h-7 w-7 rounded-full border border-gray-200 shadow-sm"
+                        style={{
+                        backgroundColor: item.color,
+                        }}
+                    />
+
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-theme-muted">
+                        {item.label}
+                    </span>
+                    </div>
+                ))}
+                </div>
+
+                {/* Details */}
+
+                <button
+                type="button"
+                    onClick={(e) => {
+                    e.stopPropagation();
+
+                    setSelectedPreset(preset);
+
+                    setThemeDialogOpen(true);
+                    }}
+                className="
+                    mt-4
                     w-full
-                    rounded-full
+                    rounded-lg
                     border
                     border-gray-200
                     bg-theme-surface
-                    px-3
                     py-2
-                    text-center
-                    font-mono
                     text-xs
-                    uppercase
+                    font-medium
                     text-theme
-                    focus:border-theme
-                    focus:outline-none
-                    "
-                />
-
-                </div>
+                    transition
+                    hover:bg-theme-secondary
+                "
+                >
+                {preset.name === "Custom"
+                    ? "Customize"
+                    : "View Details"}
+                </button>
             </div>
-            ))}
-
-        </div>
-        </div>
-
-        {/* Fonts */}
-        <div className="mt-6 rounded-theme border p-5">
-                <h3 className="mt-10 mb-4 text-lg font-semibold">
-                    Fonts
-                </h3>
-
-                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
-
-                    <div>
-                    <label className="mb-2 block text-sm font-medium text-theme">
-                        Heading Font
-                    </label>
-
-                    <select
-                        value={settings.headingFont}
-                        onChange={(e) =>
-                        setSettings((prev) =>
-                            prev
-                            ? {
-                                ...prev,
-                                headingFont: e.target.value,
-                                }
-                            : prev
-                        )
-                        }
-                        className="
-        w-full
-        rounded-theme
-        border
-        border-gray-200
-        bg-theme-surface
-        px-4
-        py-3
-        text-sm
-        text-theme
-        placeholder:text-theme-muted
-        focus:border-theme
-        focus:outline-none
-        sm:text-base
-        "
-                    >
-                        <option>Playfair Display</option>
-                        <option>Poppins</option>
-                        <option>Inter</option>
-                        <option>Montserrat</option>
-                        <option>Lora</option>
-                    </select>
-                    </div>
-
-                    <div>
-                    <label className="mb-2 block text-sm font-medium text-theme">
-                        Body Font
-                    </label>
-
-                    <select
-                        value={settings.bodyFont}
-                        onChange={(e) =>
-                        setSettings((prev) =>
-                            prev
-                            ? {
-                                ...prev,
-                                bodyFont: e.target.value,
-                                }
-                            : prev
-                        )
-                        }
-                        className="
-                            w-full
-                            rounded-theme
-                            border
-                            border-gray-200
-                            bg-theme-surface
-                            px-4
-                            py-3
-                            text-sm
-                            text-theme
-                            placeholder:text-theme-muted
-                            focus:border-theme
-                            focus:outline-none
-                            sm:text-base
-                            "
-                    >
-                        <option>Poppins</option>
-                        <option>Inter</option>
-                        <option>Montserrat</option>
-                        <option>DM Sans</option>
-                    </select>
-                    </div>
-
-                </div>
-        </div>
-
-        {/* Radius */}
-        <div className="mt-6 rounded-theme border p-5">
-            <h3 className="mt-10 mb-4 text-lg font-semibold">
-                Border Radius
-            </h3>
-
-            <div>
-
-                <input
-                type="range"
-                min={0}
-                max={40}
-                value={settings.borderRadius}
-                onChange={(e) =>
-                    setSettings((prev) =>
-                    prev
-                        ? {
-                            ...prev,
-                            borderRadius: Number(e.target.value),
-                        }
-                        : prev
-                    )
-                }
-                className="w-full"
-                />
-
-                <p className="mt-2 text-sm text-gray-500">
-                {settings.borderRadius}px
-                </p>
-
-            </div>
-
+            );
+        })}
         </div>
 
         </div>
-      <div
+        <div
         className="
-        sticky
-        bottom-4
-        z-30
-        flex
-        justify-center
-        sm:justify-end
-        "
-        >
-        <button
-          onClick={onSave}
-          disabled={loading}
-            className="
-            sticky
-            bottom-0
-            z-30
-            mt-8
-            border-t
-            bg-theme-surface/90
-            p-4
-            backdrop-blur
+            fixed
+            bottom-6
+            left-0
+            right-0
+            z-50
             flex
             justify-center
+            px-4
             sm:justify-end
-            "    
-            >
-          {loading ? "Saving..." : "Save Changes"}
-        </button>
+            sm:px-8
+        "
+        >
+        <Button
+        onClick={onSave}
+        disabled={loading}
+        className="
+            w-full
+            max-w-xs
+            bg-theme
+            text-white
+            shadow-xl
+            sm:w-auto
+        "
+        >
+        {loading ? "Saving..." : "Save Changes"}
+        </Button>
       </div>
+<ThemePresetDialog
+  open={themeDialogOpen}
+  onOpenChange={setThemeDialogOpen}
+  settings={settings}
+  setSettings={setSettings}
+  preset={selectedPreset}
+  editable={selectedPreset?.editable ?? false}
+/>
 
     </div>
   );

@@ -13,6 +13,7 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
+     editable: false,
   },
 
   {
@@ -27,6 +28,7 @@ export const themePresets = [
 
     textColor: "#1f2937",
     mutedColor: "#6b7280",
+     editable: false,
   },
 
   {
@@ -41,6 +43,7 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
+     editable: false,
   },
 
   {
@@ -55,6 +58,7 @@ export const themePresets = [
 
     textColor: "#111827",
     mutedColor: "#6b7280",
+     editable: false,
   },
 
   {
@@ -69,5 +73,30 @@ export const themePresets = [
 
     textColor: "#fafafa",
     mutedColor: "#a1a1aa",
+    editable: false,
   },
+  {
+  name: "Custom",
+
+  primaryColor: "#ec4899",
+  secondaryColor: "#fff1f6",
+  accentColor: "#f472b6",
+
+  backgroundColor: "#ffffff",
+  surfaceColor: "#ffffff",
+
+  textColor: "#111827",
+  mutedColor: "#6b7280",
+
+  headingFont: "Playfair Display",
+  bodyFont: "Poppins",
+
+  borderRadius: 24,
+
+  buttonStyle: "filled",
+
+  shadow: "medium",
+
+  editable: true,
+}
 ];
