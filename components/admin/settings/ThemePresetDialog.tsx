@@ -25,7 +25,7 @@ interface ThemePresetDialogProps {
     React.SetStateAction<Settings | null>
   >;
 
-  preset: themePresets | null;
+  preset: (typeof themePresets)[number] | null;
 
   editable: boolean;
 }
@@ -61,9 +61,9 @@ export default function ThemePresetDialog({
 
     <DialogHeader className="border-b px-6 py-4">
         <DialogTitle>
-            {editable
+        {editable
             ? "Customize Theme"
-            : `${settings.preset} Theme`}
+            : `${preset?.name} Theme`}
         </DialogTitle>
         </DialogHeader>
         <div className="flex-1 overflow-y-auto px-6 py-6">
@@ -104,7 +104,11 @@ export default function ThemePresetDialog({
 
                     <input
                         type="color"
-                        value={settings[key as keyof Settings] as string}
+                        value={
+                        (themeData?.[
+                            key as keyof typeof themeData
+                        ] as string) ?? ""
+                        }                        
                         onChange={(e) =>
                         setSettings((prev) =>
                             prev
@@ -126,7 +130,11 @@ export default function ThemePresetDialog({
                     />
 
                     <input
-                        value={settings[key as keyof Settings] as string}
+                        value={
+                        themeData?.[
+                            key as keyof typeof themeData
+                        ] as string
+                        }
                         onChange={(e) =>
                         setSettings((prev) =>
                             prev
@@ -173,7 +181,7 @@ export default function ThemePresetDialog({
     {/* Heading Fonts */}
 <ResponsiveFontPicker
   label="Heading Font"
-  value={settings.headingFont}
+  value={themeData?.headingFont ?? ""}
   fonts={headingFonts}
   disabled={!editable}
   onChange={(value) =>
@@ -191,7 +199,7 @@ export default function ThemePresetDialog({
     {/* Body Fonts */}
 <ResponsiveFontPicker
   label="Body Font"
-  value={settings.bodyFont}
+  value={themeData?.bodyFont ?? ""}
   fonts={bodyFonts}
   disabled={!editable}
   onChange={(value) =>
@@ -221,7 +229,7 @@ export default function ThemePresetDialog({
                 type="range"
                 min={0}
                 max={40}
-                value={settings.borderRadius}
+                value={themeData?.borderRadius ?? 24}
                 onChange={(e) =>
                     setSettings((prev) =>
                     prev
