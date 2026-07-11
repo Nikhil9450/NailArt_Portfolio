@@ -20,12 +20,20 @@ export async function POST(request: Request) {
       booking,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Booking Error:", error);
 
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to create booking",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Unknown error",
+
+        errors:
+          error instanceof Error
+            ? error
+            : null,
       },
       {
         status: 500,
@@ -33,7 +41,6 @@ export async function POST(request: Request) {
     );
   }
 }
-
 export async function GET() {
   try {
     await connectDB();

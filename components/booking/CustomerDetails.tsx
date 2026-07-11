@@ -18,9 +18,6 @@ export default function CustomerDetails({
 }: CustomerDetailsProps) {
   return (
     <div className="mt-10 space-y-5">
-      <h3 className="text-xl md:text-2xl font-semibold">
-        Your Details
-      </h3>
 
       {/* Name */}
       <div>
@@ -87,7 +84,7 @@ focus:outline-none
       </div>
 
       {/* Instagram */}
-      <div>
+      {/* <div>
         <label className="mb-2 block text-sm font-medium">
           Instagram (Optional)
         </label>
@@ -95,22 +92,23 @@ focus:outline-none
         <input
           {...register("instagram")}
           placeholder="@username"
-className="
-w-full
-rounded-xl
-border
-border-gray-200
-bg-gray-50
-px-4
-py-3
-transition-all
-focus:border-pink-500
-focus:bg-theme-surface
-focus:ring-4
-focus:ring-pink-100
-focus:outline-none
-"        />
-      </div>
+            className="
+            w-full
+            rounded-xl
+            border
+            border-gray-200
+            bg-gray-50
+            px-4
+            py-3
+            transition-all
+            focus:border-pink-500
+            focus:bg-theme-surface
+            focus:ring-4
+            focus:ring-pink-100
+            focus:outline-none
+            "        
+            />
+      </div> */}
 
       {/* Notes */}
       <div>

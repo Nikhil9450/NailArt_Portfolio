@@ -45,7 +45,7 @@ useEffect(() => {
 }, []);
 
   // Hide on booking page
-  if (pathname === "/book") {
+  if (pathname === "/booking") {
     return null;
   }
 

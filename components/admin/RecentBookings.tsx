@@ -84,7 +84,7 @@ export default function RecentBookings({
                     </p>
                   </div>
 
-                  <div>
+                  {/* <div>
                     <p className="text-gray-500">
                       Time
                     </p>
@@ -92,7 +92,7 @@ export default function RecentBookings({
                     <p className="font-medium">
                       {booking.time}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
@@ -117,9 +117,9 @@ export default function RecentBookings({
                       Date
                     </th>
 
-                    <th className="p-4 text-left">
+                    {/* <th className="p-4 text-left">
                       Time
-                    </th>
+                    </th> */}
 
                     <th className="p-4 text-left">
                       Status
@@ -147,9 +147,9 @@ export default function RecentBookings({
                         ).toLocaleDateString()}
                       </td>
 
-                      <td className="p-4">
+                      {/* <td className="p-4">
                         {booking.time}
-                      </td>
+                      </td> */}
 
                       <td className="p-4">
                         <span

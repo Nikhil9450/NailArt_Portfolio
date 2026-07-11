@@ -1,55 +1,49 @@
 export const headingFonts = [
   {
     value: "Playfair Display",
-   preview:
-  "The quick brown fox  • AaBbCc123",
+    preview: "Elegant Luxury Heading",
   },
   {
     value: "Cormorant Garamond",
-   preview:
-  "The quick brown fox  • AaBbCc123",
-  },
-  {
-    value: "Lora",
-   preview:
-  "The quick brown fox  • AaBbCc123",
+    preview: "Elegant Luxury Heading",
   },
   {
     value: "Montserrat",
-   preview:
-  "The quick brown fox  • AaBbCc123",
+    preview: "Modern Premium Heading",
   },
   {
     value: "Poppins",
-   preview:
-  "The quick brown fox  • AaBbCc123",
+    preview: "Clean Contemporary Heading",
   },
   {
     value: "Inter",
-   preview:
-  "The quick brown fox  • AaBbCc123",
+    preview: "Minimal Professional Heading",
   },
 ];
 
 export const bodyFonts = [
   {
     value: "Poppins",
-   preview:
-  "The quick brown fox  • AaBbCc123"
+    preview: "Perfect for everyday reading",
   },
   {
     value: "Inter",
-   preview:
-  "The quick brown fox  • AaBbCc123"
+    preview: "Modern UI and clean text",
   },
   {
-    value: "DM Sans",
-   preview:
-  "The quick brown fox  • AaBbCc123"
+    value: "Open Sans",
+    preview: "Highly readable paragraphs",
+  },
+  {
+    value: "Lato",
+    preview: "Friendly and balanced text",
+  },
+  {
+    value: "Nunito",
+    preview: "Soft rounded appearance",
   },
   {
     value: "Montserrat",
-   preview:
-  "The quick brown fox  • AaBbCc123"
+    preview: "Elegant modern typography",
   },
 ];

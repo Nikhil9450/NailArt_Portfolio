@@ -90,7 +90,7 @@ const onSubmit = async (data: BookingSchema) => {
       duration: selectedService.duration,
 
       date: selectedDate,
-      time: selectedTime,
+      // time: selectedTime,
     };
 
     console.log("Booking:", booking);
@@ -140,7 +140,7 @@ console.log("BookingForm services:", services);
             </p>
           </div>
 
-          <div className="border-t border-pink-400 pt-4">
+          {/* <div className="border-t border-pink-400 pt-4">
             <p className="text-xs uppercase tracking-wide text-pink-200">
               Time
             </p>
@@ -148,7 +148,7 @@ console.log("BookingForm services:", services);
             <p className="mt-1 font-semibold">
               {selectedTime || "Not Selected"}
             </p>
-          </div>
+          </div> */}
 
           <div className="border-t border-pink-400 pt-4">
             <p className="text-xs uppercase tracking-wide text-pink-200">
@@ -190,27 +190,41 @@ console.log("BookingForm services:", services);
         />
         </div>
 
-        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
-          <DateSelector
-            value={selectedDate}
-            onChange={setSelectedDate}
-          />
-        </div>
+      <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* Calendar */}
+          <div>
+            <DateSelector
+              value={selectedDate}
+              onChange={setSelectedDate}
+            />
+          </div>
 
-        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+          {/* Customer Details */}
+          <div className="flex flex-col justify-center">
+            <CustomerDetails
+              register={register}
+              errors={errors}
+            />
+          </div>
+
+        </div>
+      </div>
+
+        {/* <div className="mt-6 rounded-2xl border border-gray-100 p-5">
           <TimeSelector
             slots={timeSlots}
             value={selectedTime}
             onChange={setSelectedTime}
           />
-        </div>
+        </div> */}
 
-        <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+        {/* <div className="mt-6 rounded-2xl border border-gray-100 p-5">
           <CustomerDetails
             register={register}
             errors={errors}
           />
-        </div>
+        </div> */}
 
         <Button
           type="submit"
