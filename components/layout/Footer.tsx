@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Container from "./Container";
 import { getWebsiteSettings } from "@/lib/server/settings";
 import {
@@ -13,17 +14,33 @@ export default async function Footer() {
     <footer className="border-t py-8">
       <Container>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div className="text-center md:text-left">
-            <h3 className="font-semibold text-lg">
-              {settings.salonName || "Nail Studio"}
-            </h3>
+          {/* Brand */}
+          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:items-center md:text-left">
+            {/* Logo */}
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-theme bg-theme-secondary shadow-lg">
+              <Image
+                src="/logo/logo.png"
+                alt={settings.salonName}
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+            </div>
 
-            <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()}{" "}
-              {settings.salonName || "Nail Studio"}. All rights reserved.
-            </p>
+            {/* Salon Name */}
+            <div>
+              <h3 className="text-xl font-bold text-theme">
+                {settings.salonName || "Nail Studio"}
+              </h3>
+
+              <p className="mt-1 text-sm text-theme-muted">
+                © {new Date().getFullYear()}{" "}
+                {settings.salonName || "Nail Studio"}. All rights reserved.
+              </p>
+            </div>
           </div>
 
+          {/* Social Links */}
           <div className="flex items-center gap-5">
             {settings.instagram && (
               <a
