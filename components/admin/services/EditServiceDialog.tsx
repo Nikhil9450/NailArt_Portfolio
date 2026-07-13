@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { compressImage } from "@/lib/imageCompression";
 import { Service } from "@/types/service";
 import { updateService } from "@/lib/api/service";
 
@@ -37,9 +37,9 @@ export default function EditServiceDialog({
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [image, setImage] = useState("");
-
+ 
   const [file, setFile] = useState<File | null>(null);
-
+  const [uploadingImage, setUploadingImage] =useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -178,16 +178,52 @@ export default function EditServiceDialog({
             className="h-48 w-full rounded-xl object-cover"
           />
 
-          <Input
-            type="file"
-            accept="image/*"
-            onChange={(e) =>
-              setFile(
-                e.target.files?.[0] ?? null
-              )
-            }
-          />
+        <Input
+          type="file"
+          accept="image/*"
+          disabled={uploadingImage}
+          onChange={async (e) => {
+            const file = e.target.files?.[0];
 
+            if (!file) return;
+
+            // if (!validateImage(file)) {
+            //   e.target.value = "";
+            //   return;
+            // }
+
+            try {
+              setUploadingImage(true);
+
+              const compressedFile =
+                await compressImage(file);
+
+              console.log(
+                `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+              );
+
+              console.log(
+                `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+              );
+
+              setFile(compressedFile);
+            } catch (error) {
+              console.error(
+                "Image compression failed:",
+                error
+              );
+            } finally {
+              setUploadingImage(false);
+              // e.target.value = "";
+            }
+          }}
+          className="disabled:cursor-not-allowed disabled:opacity-60"
+        />
+          {uploadingImage && (
+            <p className="mt-2 animate-pulse text-sm text-theme-muted">
+              Compressing and uploading image...
+            </p>
+          )}
           {file && (
             <img
               src={URL.createObjectURL(file)}

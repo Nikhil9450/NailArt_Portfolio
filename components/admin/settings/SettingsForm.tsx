@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { themePresets } from "@/constants/themePresets";
 import { useState } from "react";
 import ThemePresetDialog from "./ThemePresetDialog";
+import { compressImage } from "@/lib/imageCompression";
 import {
   Select,
   SelectContent,
@@ -33,6 +34,8 @@ export default function SettingsForm({
 
     const [selectedPreset, setSelectedPreset] =
     useState(themePresets[0]);
+    const [uploadingAbout, setUploadingAbout] = useState(false);
+    const [uploadingHero, setUploadingHero] = useState(false);
   return (
     <div className="space-y-10">
 
@@ -437,55 +440,84 @@ sm:text-base
             </label>
 
             <input
-                type="file"
-                accept="image/*"
-                onChange={async (e) => {
+            type="file"
+            accept="image/*"
+            disabled={uploadingHero}
+            onChange={async (e) => {
                 const file = e.target.files?.[0];
 
                 if (!file) return;
-                if (!validateImage(file)) {
-                e.target.value = "";
-                return;
-                }
-                const formData = new FormData();
-                formData.append("file", file);
+
+                // if (!validateImage(file)) {
+                //   e.target.value = "";
+                //   return;
+                // }
 
                 try {
-                    const response = await fetch("/api/upload", {
+                setUploadingHero(true);
+
+                const compressedFile = await compressImage(file);
+
+                console.log(
+                    `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                console.log(
+                    `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                const formData = new FormData();
+                formData.append("file", compressedFile);
+
+                const response = await fetch("/api/upload", {
                     method: "POST",
                     body: formData,
-                    });
+                });
 
-                    const data = await response.json();
-
-                    setSettings((prev) =>
-                    prev
-                        ? {
-                            ...prev,
-                            heroImage: data.url,
-                        }
-                        : prev
-                    );
-                } catch (error) {
-                    console.error(error);
+                if (!response.ok) {
+                    throw new Error("Upload failed");
                 }
-                }}
-                className="
-w-full
-rounded-theme
-border
-border-gray-200
-bg-theme-surface
-px-4
-py-3
-text-sm
-text-theme
-placeholder:text-theme-muted
-focus:border-theme
-focus:outline-none
-sm:text-base
-"
+
+                const data = await response.json();
+
+                setSettings((prev) =>
+                    prev
+                    ? {
+                        ...prev,
+                        heroImage: data.url,
+                        }
+                    : prev
+                );
+                } catch (error) {
+                console.error(error);
+                } finally {
+                setUploadingHero(false);
+                // e.target.value = "";
+                }
+            }}
+            className="
+                w-full
+                rounded-theme
+                border
+                border-gray-200
+                bg-theme-surface
+                px-4
+                py-3
+                text-sm
+                text-theme
+                placeholder:text-theme-muted
+                focus:border-theme
+                focus:outline-none
+                disabled:cursor-not-allowed
+                disabled:opacity-60
+                sm:text-base
+            "
             />
+            {uploadingHero && (
+            <p className="mt-2 text-sm text-theme-muted">
+                Compressing and uploading hero image...
+            </p>
+            )}
 
             {settings.heroImage && (
                 <img
@@ -589,52 +621,85 @@ sm:text-base
             </label>
 
             <input
-                type="file"
-                accept="image/*"
-                onChange={async (e) => {
+            type="file"
+            accept="image/*"
+            disabled={uploadingAbout}
+            onChange={async (e) => {
                 const file = e.target.files?.[0];
 
                 if (!file) return;
 
-                const formData = new FormData();
-                formData.append("file", file);
+                // if (!validateImage(file)) {
+                // e.target.value = "";
+                // return;
+                // }
 
                 try {
-                    const response = await fetch("/api/upload", {
+                setUploadingAbout(true);
+
+                const compressedFile = await compressImage(file);
+
+                console.log(
+                    `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                console.log(
+                    `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                const formData = new FormData();
+                formData.append("file", compressedFile);
+
+                const response = await fetch("/api/upload", {
                     method: "POST",
                     body: formData,
-                    });
+                });
 
-                    const data = await response.json();
-
-                    setSettings((prev) =>
-                    prev
-                        ? {
-                            ...prev,
-                            aboutImage: data.url,
-                        }
-                        : prev
-                    );
-                } catch (error) {
-                    console.error(error);
+                if (!response.ok) {
+                    throw new Error("Upload failed");
                 }
-                }}
-                className="
-w-full
-rounded-theme
-border
-border-gray-200
-bg-theme-surface
-px-4
-py-3
-text-sm
-text-theme
-placeholder:text-theme-muted
-focus:border-theme
-focus:outline-none
-sm:text-base
-"
+
+                const data = await response.json();
+
+                setSettings((prev) =>
+                    prev
+                    ? {
+                        ...prev,
+                        aboutImage: data.url,
+                        }
+                    : prev
+                );
+                } catch (error) {
+                console.error(error);
+                } finally {
+                setUploadingAbout(false);
+                // e.target.value = "";
+                }
+            }}
+            className="
+                w-full
+                rounded-theme
+                border
+                border-gray-200
+                bg-theme-surface
+                px-4
+                py-3
+                text-sm
+                text-theme
+                placeholder:text-theme-muted
+                focus:border-theme
+                focus:outline-none
+                disabled:cursor-not-allowed
+                disabled:opacity-60
+                sm:text-base
+            "
             />
+
+            {uploadingAbout && (
+            <p className="mt-2 text-sm text-theme-muted">
+                Compressing and uploading image...
+            </p>
+            )}
 
             {settings.aboutImage && (
                 <img

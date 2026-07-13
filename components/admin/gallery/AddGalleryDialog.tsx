@@ -4,6 +4,8 @@ import { useState } from "react";
 import { createGallery } from "@/lib/api/gallery";
 import { toast } from "sonner";
 import { validateImage } from "@/lib/imageValidation";
+import { compressImage } from "@/lib/imageCompression";
+import { Input } from "@/components/ui/input";
 interface AddGalleryDialogProps {
   open: boolean;
   onClose: () => void;
@@ -19,7 +21,7 @@ export default function AddGalleryDialog({
     const [category, setCategory] = useState("");
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
-
+    const [uploadingImage, setUploadingImage] = useState(false);
   if (!open) return null;
 
 const handleSubmit = async (
@@ -30,8 +32,7 @@ const handleSubmit = async (
     if (!file) {
       toast.info("Please select an image.");
       return;
-    }
-
+    }    
     try {
       setLoading(true);
 
@@ -118,21 +119,59 @@ const handleSubmit = async (
                 Image
             </label>
 
-            <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                if (!validateImage(e.target.files?.[0] ?? null)) {
-                e.target.value = "";
-                return;
+            <Input
+              type="file"
+              accept="image/*"
+              disabled={uploadingImage}
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+
+                if (!file) return;
+
+                // if (!validateImage(file)) {
+                //   e.target.value = "";
+                //   return;
+                // }
+
+                try {
+                  setUploadingImage(true);
+
+                  const compressedFile = await compressImage(file);
+
+                  console.log(
+                    `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                  );
+
+                  console.log(
+                    `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+                  );
+
+                  setFile(compressedFile);
+                } catch (error) {
+                  console.error(
+                    "Image compression failed:",
+                    error
+                  );
+                } finally {
+                  setUploadingImage(false);
+                  // e.target.value = "";
                 }
-                if (e.target.files?.[0]) {
-                    setFile(e.target.files[0]);
-                }
-                }}
-                className="w-full rounded-xl border p-3"
-                required
+              }}
+              className="
+                w-full
+                rounded-xl
+                border
+                p-3
+                disabled:cursor-not-allowed
+                disabled:opacity-60
+              "
+              required
             />
+            {uploadingImage && (
+              <p className="mt-2 animate-pulse text-sm text-theme-muted">
+                Compressing image...
+              </p>
+            )}
 
             {file && (
                 <img

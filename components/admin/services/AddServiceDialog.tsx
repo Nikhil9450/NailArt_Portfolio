@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { compressImage } from "@/lib/imageCompression";
 import { createService } from "@/lib/api/service";
 import { validateImage } from "@/lib/imageValidation";
 
@@ -34,7 +34,8 @@ export default function AddServiceDialog({
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("5");
-
+  const [uploadingImage, setUploadingImage] =
+  useState(false);
   const [file, setFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
@@ -44,7 +45,6 @@ export default function AddServiceDialog({
       toast.error("Please select an image.");
       return;
     }
-
     try {
       setLoading(true);
 
@@ -157,19 +157,49 @@ export default function AddServiceDialog({
           <Input
             type="file"
             accept="image/*"
-            onChange={(e) =>   
-           {  
-            if (!validateImage(e.target.files?.[0] ?? null)) {
-                e.target.value = "";
-                return;
-            }
-            setFile(
-                e.target.files?.[0] ?? null
-              )
-            }
-            }
-          />
+            disabled={uploadingImage}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
 
+              if (!file) return;
+
+              // if (!validateImage(file)) {
+              //   e.target.value = "";
+              //   return;
+              // }
+
+              try {
+                setUploadingImage(true);
+
+                const compressedFile =
+                  await compressImage(file);
+
+                console.log(
+                  `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                console.log(
+                  `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                setFile(compressedFile);
+              } catch (error) {
+                console.error(
+                  "Image compression failed:",
+                  error
+                );
+              } finally {
+                setUploadingImage(false);
+                // e.target.value = "";
+              }
+            }}
+            className="disabled:cursor-not-allowed disabled:opacity-60"
+          />
+          {uploadingImage && (
+            <p className="mt-2 animate-pulse text-sm text-theme-muted">
+              Compressing image...
+            </p>
+          )}
           {file && (
             <img
               src={URL.createObjectURL(file)}

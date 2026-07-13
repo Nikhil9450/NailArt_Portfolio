@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { compressImage } from "@/lib/imageCompression";
 import { createTestimonial } from "@/lib/api/testimonial";
 import { validateImage } from "@/lib/imageValidation";
 
@@ -36,7 +36,8 @@ export default function AddTestimonialDialog({
   const [file, setFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
-
+  const [uploadingTestimonial, setUploadingTestimonial] =
+    useState(false);
   const handleSubmit = async () => {
     if (!name || !service || !review) {
       toast.error("Please fill all required fields.");
@@ -157,18 +158,39 @@ export default function AddTestimonialDialog({
           <Input
             type="file"
             accept="image/*"
-            onChange={(e) =>{
-                if (!validateImage(e.target.files?.[0] ?? null)) {
-                e.target.value = "";
-                return;
-                }
-                setFile(
-                  e.target.files?.[0] ?? null
-                )
+            disabled={uploadingTestimonial}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
 
-            }
-                
-            }
+              if (!file) return;
+
+              // if (!validateImage(file)) {
+              //   e.target.value = "";
+              //   return;
+              // }
+
+              try {
+                setUploadingTestimonial(true);
+
+                const compressedFile = await compressImage(file);
+
+                console.log(
+                  `Original: ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                console.log(
+                  `Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`
+                );
+
+                setFile(compressedFile);
+              } catch (error) {
+                console.error("Image compression failed:", error);
+              } finally {
+                setUploadingTestimonial(false);
+                // e.target.value = "";
+              }
+            }}
+            className="disabled:cursor-not-allowed disabled:opacity-60"
           />
 
           {file && (
