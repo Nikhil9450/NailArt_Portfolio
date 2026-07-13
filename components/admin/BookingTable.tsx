@@ -59,7 +59,7 @@ export default function BookingTable({
               <th className="p-4 text-left">Service</th>
               <th className="p-4 text-left">Phone</th>
               <th className="p-4 text-left">Date</th>
-              <th className="p-4 text-left">Time</th>
+              {/* <th className="p-4 text-left">Time</th> */}
               <th className="p-4 text-left">Status</th>
               <th className="p-4 text-left"> Action</th>
             </tr>
@@ -97,9 +97,9 @@ export default function BookingTable({
                     {new Date(booking.date).toLocaleDateString()}
                   </td>
 
-                  <td className="p-4">
+                  {/* <td className="p-4">
                     {booking.time}
-                  </td>
+                  </td> */}
 
                     <td className="p-4">
                     <span

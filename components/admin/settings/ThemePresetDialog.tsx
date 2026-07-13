@@ -29,8 +29,6 @@ interface ThemePresetDialogProps {
 
   editable: boolean;
 
-  onSave: () => Promise<void>;
-  loading: boolean;
 }
 
 export default function ThemePresetDialog({
@@ -40,8 +38,6 @@ export default function ThemePresetDialog({
   setSettings,
   preset,
   editable,
-  onSave,
-  loading
 }: ThemePresetDialogProps) {
     const themeData = editable ? settings : preset;
   return (
@@ -298,14 +294,12 @@ export default function ThemePresetDialog({
 
         {editable && (
           <Button
-            disabled={loading}
             className="flex-1 bg-theme sm:flex-none"
-            onClick={async () => {
-              await onSave();
+            onClick={() => {
               onOpenChange(false);
             }}
           >
-            {loading ? "Saving..." : "Save Theme"}
+            Done
           </Button>
         )}
         </div>

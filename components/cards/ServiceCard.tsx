@@ -76,7 +76,7 @@ export default function ServiceCard({
 
         {/* Button */}
           <Link
-            href={`/book?service=${encodeURIComponent(service.title)}`}
+            href={`/booking?service=${encodeURIComponent(service.title)}`}
           >
             <Button className="mt-4 h-10 w-full rounded-full text-sm md:mt-6 md:h-11 md:text-base">
               Book Now

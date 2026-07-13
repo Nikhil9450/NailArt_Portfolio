@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Phone,
   Mail,
@@ -5,31 +7,35 @@ import {
   Clock,
 } from "lucide-react";
 
-import { contactData } from "@/data/contact";
+import { useWebsiteSettings } from "@/components/providers/WebsiteSettingsProvider";
 
 export default function ContactInfo() {
+  const settings =
+    useWebsiteSettings();
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <Phone className="text-pink-500" />
-        <span>{contactData.phone}</span>
+        <span>{settings.phone}</span>
       </div>
 
       <div className="flex items-center gap-4">
         <Mail className="text-pink-500" />
-        <span>{contactData.email}</span>
+        <span>{settings.email}</span>
       </div>
 
       <div className="flex items-center gap-4">
         <MapPin className="text-pink-500" />
-        <span>{contactData.address}</span>
+        <span>{settings.address}</span>
       </div>
 
       <div className="flex items-center gap-4">
         <Clock className="text-pink-500" />
+
         <div>
-          <p>{contactData.workingHours[0]}</p>
-          <p>{contactData.workingHours[1]}</p>
+          <p>{settings.workingHours}</p>
+          {/* <p>{settings.workingHours?.[1]}</p> */}
         </div>
       </div>
     </div>

@@ -889,8 +889,6 @@ sm:text-base
   setSettings={setSettings}
   preset={selectedPreset}
   editable={selectedPreset?.editable ?? false}
-  onSave={onSave}
-    loading={loading}
 />
 
     </div>
