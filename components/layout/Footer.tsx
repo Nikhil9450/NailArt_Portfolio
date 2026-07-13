@@ -1,5 +1,10 @@
 import Container from "./Container";
 import { getWebsiteSettings } from "@/lib/server/settings";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export default async function Footer() {
   const settings = await getWebsiteSettings();
@@ -19,15 +24,16 @@ export default async function Footer() {
             </p>
           </div>
 
-          <div className="flex gap-6 text-sm">
+          <div className="flex items-center gap-5">
             {settings.instagram && (
               <a
                 href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-theme-primary"
+                aria-label="Instagram"
+                className="rounded-full p-2 transition-all duration-300 hover:bg-theme-secondary hover:scale-110"
               >
-                Instagram
+                <FaInstagram className="h-6 w-6 text-theme-primary" />
               </a>
             )}
 
@@ -36,9 +42,10 @@ export default async function Footer() {
                 href={settings.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-theme-primary"
+                aria-label="Facebook"
+                className="rounded-full p-2 transition-all duration-300 hover:bg-theme-secondary hover:scale-110"
               >
-                Facebook
+                <FaFacebookF className="h-6 w-6 text-theme-primary" />
               </a>
             )}
 
@@ -47,9 +54,10 @@ export default async function Footer() {
                 href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-theme-primary"
+                aria-label="WhatsApp"
+                className="rounded-full p-2 transition-all duration-300 hover:bg-theme-secondary hover:scale-110"
               >
-                WhatsApp
+                <FaWhatsapp className="h-6 w-6 text-theme-primary" />
               </a>
             )}
           </div>

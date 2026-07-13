@@ -48,7 +48,7 @@ export default function AboutContent({
           >
             <CheckCircle2
               size={20}
-              className="shrink-0 text-pink-500"
+              className="shrink-0 h-5 w-5 text-theme-primary"
             />
 
             <span className="text-sm md:text-base">

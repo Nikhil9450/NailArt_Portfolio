@@ -14,30 +14,26 @@ export default function ContactInfo() {
     useWebsiteSettings();
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <Phone className="text-pink-500" />
-        <span>{settings.phone}</span>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <Mail className="text-pink-500" />
-        <span>{settings.email}</span>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <MapPin className="text-pink-500" />
-        <span>{settings.address}</span>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <Clock className="text-pink-500" />
-
-        <div>
-          <p>{settings.workingHours}</p>
-          {/* <p>{settings.workingHours?.[1]}</p> */}
-        </div>
-      </div>
+  <div className="space-y-2 sm:space-y-6">
+    <div className="flex items-center gap-3 sm:gap-4">
+      <Phone className="h-4 w-4 shrink-0 text-theme-primary sm:h-5 sm:w-5" />
+      <span className="text-sm sm:text-base">{settings.phone}</span>
     </div>
+
+    <div className="flex items-center gap-3 sm:gap-4">
+      <Mail className="h-4 w-4 shrink-0 text-theme-primary sm:h-5 sm:w-5" />
+      <span className="text-sm sm:text-base">{settings.email}</span>
+    </div>
+
+    <div className="flex items-center gap-3 sm:gap-4">
+      <MapPin className="h-4 w-4 shrink-0 text-theme-primary sm:h-5 sm:w-5" />
+      <span className="text-sm sm:text-base">{settings.address}</span>
+    </div>
+
+    <div className="flex items-center gap-3 sm:gap-4">
+      <Clock className="h-4 w-4 shrink-0 text-theme-primary sm:h-5 sm:w-5" />
+      <span className="text-sm sm:text-base">{settings.workingHours}</span>
+    </div>
+  </div>
   );
 }

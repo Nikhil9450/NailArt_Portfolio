@@ -16,7 +16,7 @@ export default function ContactCTA() {
           center
         />
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-2">
+        <div className="mt-8 grid gap-10 lg:grid-cols-2">
           <ContactInfo />
           <ContactCard />
         </div>

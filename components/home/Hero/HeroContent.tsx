@@ -19,6 +19,7 @@ export default function HeroContent({
       initial={{ opacity: 0, x: -60 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
+      style={{marginTop:"1rem"}}
     >
       <span className="rounded-full bg-theme-secondary px-4 py-2 text-sm font-medium text-theme-primary">
         ✨ Luxury Nail Artist

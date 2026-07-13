@@ -233,6 +233,9 @@ h6 {
   .border-theme {
     border-color: var(--theme-primary);
   }
+  .border-theme-hover:hover {
+    border-color: var(--theme-primary);
+  }
 
   .rounded-theme {
     border-radius: var(--theme-radius);

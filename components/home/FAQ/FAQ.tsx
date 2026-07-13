@@ -11,7 +11,7 @@ import { faqs } from "@/data/faqs";
 
 export default function FAQ() {
   return (
-    <Section id="faq" className="bg-[#FFF8F5]">
+    <Section id="faq" className="bg-theme-surface">
       <Container>
         <SectionHeading
           badge="FAQ"

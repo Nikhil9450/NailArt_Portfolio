@@ -102,7 +102,7 @@ export default function ComparisonSlider({
         onTouchStart={() => setIsDragging(true)}
         className="absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-theme-surface shadow-xl md:h-12 md:w-12"
       >
-        <MoveHorizontal className="h-5 w-5 text-pink-500 md:h-6 md:w-6" />
+        <MoveHorizontal className="h-5 w-5 text-theme-primary md:h-6 md:w-6" />
       </div>
 
       {/* Labels */}
@@ -110,7 +110,7 @@ export default function ComparisonSlider({
         Before
       </div>
 
-      <div className="absolute right-3 top-3 rounded-full bg-pink-500 px-3 py-1 text-xs font-semibold text-white md:right-5 md:top-5 md:px-4 md:py-2 md:text-sm">
+      <div className="absolute right-3 top-3 rounded-full bg-theme px-3 py-1 text-xs font-semibold text-white md:right-5 md:top-5 md:px-4 md:py-2 md:text-sm">
         After
       </div>
     </div>

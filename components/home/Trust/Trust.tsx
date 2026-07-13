@@ -60,7 +60,7 @@ export default function Trust() {
                 }}
                 className="rounded-2xl border bg-theme-surface p-4 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl md:rounded-theme md:p-6"
               >
-                <Icon className="mx-auto mb-3 h-6 w-6 text-pink-500 md:mb-4 md:h-8 md:w-8" />
+                <Icon className="mx-auto mb-3 h-6 w-6 text-theme-primary md:mb-4 md:h-8 md:w-8" />
 
                 <h3 className="text-2xl font-bold md:text-3xl">
                   {item.value}
