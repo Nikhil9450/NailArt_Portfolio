@@ -23,7 +23,7 @@ export default function TimeSelector({
           type="button"
           disabled={!slot.available}
           onClick={() => onChange(slot.time)}
-          className={`group rounded-2xl border p-3 sm:p-4 transition-all duration-300
+          className={`group rounded-theme border p-3 sm:p-4 transition-all duration-300
 
           ${
             value === slot.time

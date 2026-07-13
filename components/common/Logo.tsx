@@ -19,7 +19,6 @@ export default function Logo() {
           border-2
           border-theme
           bg-theme-secondary
-          shadow-lg
           transition-transform
           duration-300
           group-hover:scale-105

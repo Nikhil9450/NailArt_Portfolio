@@ -46,9 +46,9 @@ export default function DateSelector({
           type="button"
           variant="outline"
           onClick={() => setOpen(true)}
-          className="h-14 w-full justify-start rounded-2xl border-gray-200 bg-white text-left"
+          className="h-14 w-full justify-start rounded-theme border-gray-200 bg-white text-left"
         >
-          <CalendarIcon className="mr-3 h-5 w-5 text-pink-500" />
+          <CalendarIcon className="mr-3 h-5 w-5 text-theme-primary" />
 
           {formattedDate}
         </Button>
@@ -88,7 +88,7 @@ export default function DateSelector({
       {/* ---------- Desktop ---------- */}
 
       <div className="hidden md:block">
-        <div className="overflow-hidden rounded-2xl border bg-white p-4">
+        <div className="overflow-hidden rounded-theme border bg-white p-4">
           <DayPicker
             mode="single"
             selected={value}

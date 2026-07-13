@@ -6,7 +6,7 @@ export default function HeroStats() {
       {heroData.stats.map((item) => (
         <div
           key={item.label}
-          className="rounded-2xl border bg-white p-5 text-center shadow-sm"
+          className="rounded-theme border bg-white p-5 text-center shadow-sm"
         >
           <h3 className="text-2xl font-bold text-theme-primary md:text-3xl">
             {item.number}

@@ -30,7 +30,7 @@ export default function ServicesTable({
   {services.map((service) => (
     <div
       key={service._id}
-      className="rounded-2xl border border-gray-200 bg-theme-surface p-3 shadow-sm transition hover:shadow-md"
+      className="rounded-theme border border-gray-200 bg-theme-surface p-3 shadow-sm transition hover:shadow-md"
     >
       <div className="flex gap-3">
         {/* Image */}

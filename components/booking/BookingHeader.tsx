@@ -4,7 +4,7 @@ export default function BookingHeader() {
   return (
     <Container>
       <div className="mx-auto max-w-3xl text-center">
-        <p className="font-medium uppercase tracking-[0.3em] text-pink-500">
+        <p className="font-medium uppercase tracking-[0.3em] text-theme-primary">
           Book Appointment
         </p>
 

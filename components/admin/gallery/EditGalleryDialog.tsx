@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Gallery } from "@/types/gallery";
 import { updateGallery } from "@/lib/api/gallery";
-
+import { compressImage } from "@/lib/imageCompression";
 interface EditGalleryDialogProps {
   open: boolean;
   onClose: () => void;
@@ -22,7 +22,7 @@ export default function EditGalleryDialog({
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [uploadingImage, setUploadingImage] =useState(false);
   useEffect(() => {
     if (image) {
       setTitle(image.title);
@@ -99,16 +99,68 @@ export default function EditGalleryDialog({
 
           <div>
             <label className="mb-2 block">
-              Image URL
+              Current Image
             </label>
 
+            <img
+              src={imageUrl}
+              alt={title}
+              className="mb-4 h-40 w-full rounded-xl object-cover"
+            />
+
             <input
-              value={imageUrl}
-              onChange={(e) =>
-                setImageUrl(e.target.value)
-              }
+              type="file"
+              accept="image/*"
+              disabled={uploadingImage}
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+
+                if (!file) return;
+
+                // if (!validateImage(file)) {
+                //   e.target.value = "";
+                //   return;
+                // }
+
+                try {
+                  setUploadingImage(true);
+
+                  const compressed =
+                    await compressImage(file);
+
+                  const formData = new FormData();
+                  formData.append("file", compressed);
+
+                  const response = await fetch(
+                    "/api/upload",
+                    {
+                      method: "POST",
+                      body: formData,
+                    }
+                  );
+
+                  if (!response.ok) {
+                    throw new Error("Upload failed");
+                  }
+
+                  const data = await response.json();
+
+                  setImageUrl(data.url);
+                } catch (error) {
+                  console.error(error);
+                } finally {
+                  setUploadingImage(false);
+                  e.target.value = "";
+                }
+              }}
               className="w-full rounded-xl border p-3"
             />
+
+            {uploadingImage && (
+              <p className="mt-2 animate-pulse text-sm text-theme-muted">
+                Compressing & uploading image...
+              </p>
+            )}
           </div>
 
           <div className="flex justify-end gap-3">

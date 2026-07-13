@@ -38,7 +38,7 @@ export default function RecentBookings({
       </div>
 
       {recentBookings.length === 0 ? (
-        <div className="rounded-2xl border border-dashed p-10 text-center text-gray-500">
+        <div className="rounded-theme border border-dashed p-10 text-center text-gray-500">
           No recent bookings found.
         </div>
       ) : (
@@ -49,7 +49,7 @@ export default function RecentBookings({
             {recentBookings.map((booking) => (
               <div
                 key={booking._id}
-                className="rounded-2xl border bg-theme-surface p-4 shadow-sm"
+                className="rounded-theme border bg-theme-surface p-4 shadow-sm"
               >
                 <div className="flex items-start justify-between">
                   <div>

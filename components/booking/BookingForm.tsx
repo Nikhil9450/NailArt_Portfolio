@@ -128,8 +128,8 @@ console.log("BookingForm services:", services);
 
         <div className="mt-6 space-y-5">
 
-          <div className="border-t border-pink-400 pt-4">
-            <p className="text-xs uppercase tracking-wide text-pink-200">
+          <div className="border-t border-white-400 pt-4">
+            <p className="text-xs uppercase tracking-wide text-white-200">
               Date
             </p>
 
@@ -150,8 +150,8 @@ console.log("BookingForm services:", services);
             </p>
           </div> */}
 
-          <div className="border-t border-pink-400 pt-4">
-            <p className="text-xs uppercase tracking-wide text-pink-200">
+          <div className="pt-4">
+            <p className="text-xs uppercase tracking-wide text-white-200">
               Customer
             </p>
 
@@ -160,8 +160,8 @@ console.log("BookingForm services:", services);
             </p>
           </div>
 
-          <div className="border-t border-pink-400 pt-4">
-            <p className="text-xs uppercase tracking-wide text-pink-200">
+          <div className="pt-4">
+            <p className="text-xs uppercase tracking-wide text-white-200">
               Phone
             </p>
 
@@ -180,7 +180,7 @@ console.log("BookingForm services:", services);
         onSubmit={handleSubmit(onSubmit)}
         className="rounded-theme bg-theme-surface p-5 shadow-xl sm:p-6 lg:p-8"
       >
-        <div className="rounded-2xl border border-gray-100 p-5">
+        <div className="rounded-theme border border-gray-100 p-5">
         <ServiceSelect
           services={services}
           value={watch("service")}
@@ -190,7 +190,7 @@ console.log("BookingForm services:", services);
         />
         </div>
 
-      <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+      <div className="mt-6 rounded-theme border border-gray-100 p-5">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Calendar */}
           <div>
@@ -211,7 +211,7 @@ console.log("BookingForm services:", services);
         </div>
       </div>
 
-        {/* <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+        {/* <div className="mt-6 rounded-theme border border-gray-100 p-5">
           <TimeSelector
             slots={timeSlots}
             value={selectedTime}
@@ -219,7 +219,7 @@ console.log("BookingForm services:", services);
           />
         </div> */}
 
-        {/* <div className="mt-6 rounded-2xl border border-gray-100 p-5">
+        {/* <div className="mt-6 rounded-theme border border-gray-100 p-5">
           <CustomerDetails
             register={register}
             errors={errors}

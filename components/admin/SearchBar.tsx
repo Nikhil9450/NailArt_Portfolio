@@ -23,7 +23,7 @@ export default function SearchBar({
         placeholder="Search customer, phone or service..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-2xl border border-gray-200 py-3 pl-12 pr-4 focus:border-pink-500 focus:outline-none"
+        className="w-full rounded-theme border border-gray-200 py-3 pl-12 pr-4 focus:border-pink-500 focus:outline-none"
       />
     </div>
   );
