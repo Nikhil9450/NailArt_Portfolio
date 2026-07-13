@@ -33,7 +33,7 @@ export default function SettingsManager() {
     );
     setSavedSettings(updated);
     setWorkingSettings(structuredClone(updated));
-    toast.error("Settings saved successfully.");
+    toast.success("Settings saved successfully.");
   } catch (error) {
     console.error(error);
     toast.error("Failed to save settings.");

@@ -76,7 +76,7 @@ export default function AddServiceDialog({
       onSuccess();
 
       onOpenChange(false);
-
+      toast.success("successfully added.");
       setTitle("");
       setDescription("");
       setCategory("");

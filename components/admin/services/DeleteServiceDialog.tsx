@@ -42,9 +42,7 @@ export default function DeleteServiceDialog({
       await deleteService(service._id);
 
       toast.success("Service deleted successfully.");
-
       onSuccess();
-
       onOpenChange(false);
     } catch (error) {
       console.error(error);

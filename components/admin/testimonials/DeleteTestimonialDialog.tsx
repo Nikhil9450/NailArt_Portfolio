@@ -41,8 +41,8 @@ export default function DeleteTestimonialDialog({
       await deleteTestimonial(testimonial._id);
 
       onSuccess();
-
       onOpenChange(false);
+      toast.success("successfully deleted.");
     } catch (error) {
       console.error(error);
       toast.error("Failed to delete testimonial.");

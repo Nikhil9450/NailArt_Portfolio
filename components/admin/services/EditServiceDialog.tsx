@@ -96,8 +96,8 @@ export default function EditServiceDialog({
       });
 
       onSuccess();
-
       onOpenChange(false);
+      toast.success("successfully updated.");
     } catch (error) {
       console.error(error);
       toast.error("Failed to update service.");

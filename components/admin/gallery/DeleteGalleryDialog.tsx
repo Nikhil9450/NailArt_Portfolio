@@ -23,6 +23,7 @@ export default function DeleteGalleryDialog({
       await deleteGallery(image._id);
 
       onSuccess();
+      toast.success("Deleted Successfully.");
       onClose();
     } catch (error) {
       console.error(error);

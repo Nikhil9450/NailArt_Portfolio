@@ -48,6 +48,7 @@ export default function EditGalleryDialog({
       });
 
       onSuccess();
+      toast.success("successfully updated.");
       onClose();
     } catch (error) {
       console.error(error);

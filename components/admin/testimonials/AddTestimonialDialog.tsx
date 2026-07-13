@@ -83,6 +83,7 @@ export default function AddTestimonialDialog({
       setReview("");
       setRating("5");
       setFile(null);
+      toast.success("successfully created.");
     } catch (error) {
       console.error(error);
       toast.error("Failed to create testimonial.");

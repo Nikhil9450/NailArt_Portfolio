@@ -86,6 +86,7 @@ export default function EditTestimonialDialog({
 
       onSuccess();
       onOpenChange(false);
+      toast.success("Updated successfully.");
     } catch (error) {
       console.error(error);
       toast.error("Failed to update testimonial.");

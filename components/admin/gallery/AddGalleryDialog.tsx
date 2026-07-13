@@ -28,7 +28,7 @@ const handleSubmit = async (
     e.preventDefault();
 
     if (!file) {
-      toast.error("Please select an image.");
+      toast.info("Please select an image.");
       return;
     }
 
