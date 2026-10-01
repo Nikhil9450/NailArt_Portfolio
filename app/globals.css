@@ -46,6 +46,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --font-cursive: var(--font-allura);
 }
 
 :root {
@@ -184,6 +185,12 @@ body {
 
   --theme-heading-font: "Playfair Display";
   --theme-body-font: "Poppins";
+  --theme-gradient: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fff1f6 50%,
+    #fce7f3 100%
+  );
 }
 
 body {

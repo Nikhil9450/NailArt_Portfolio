@@ -2,7 +2,7 @@ import { heroData } from "@/data/hero";
 
 export default function HeroStats() {
   return (
-    <div className="mt-12 grid grid-cols-2 gap-4 md:flex md:flex-wrap md:gap-10">
+    <div className="mt-12 grid grid-cols-3 gap-4 md:flex md:flex-wrap md:gap-10">
       {heroData.stats.map((item) => (
         <div
           key={item.label}
@@ -12,7 +12,7 @@ export default function HeroStats() {
             {item.number}
           </h3>
 
-          <p className="mt-2 text-sm text-gray-500 md:text-base">
+          <p className="mt-2 text-xs text-gray-500 md:text-base">
             {item.label}
           </p>
         </div>

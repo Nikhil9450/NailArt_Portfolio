@@ -9,7 +9,7 @@ export default async function Hero() {
   return (
     <section className="bg-theme-surface" id="hero">
       <Container>
-        <div className="grid min-h-[90vh] items-center gap-16 lg:grid-cols-2">
+        <div className="grid min-h-[90vh] items-center lg:gap-16 lg:grid-cols-2">
           <HeroContent settings={settings} />
           <HeroImage settings={settings} />
         </div>

@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Trust />
+      {/* <Trust /> */}
       <FeaturedGallery />
       <About />
       <Services />

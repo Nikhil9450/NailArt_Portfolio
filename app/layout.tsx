@@ -8,10 +8,17 @@ import {
   Lato,
   Nunito,
   Cormorant_Garamond,
+  Allura
 } from "next/font/google";
 
 import "./globals.css";
 import { Toaster } from "sonner";
+
+export const allura = Allura({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-allura",
+});
 
 export const poppins = Poppins({
   subsets: ["latin"],
@@ -78,6 +85,7 @@ export default function RootLayout({
         ${lato.variable}
         ${nunito.variable}
         ${cormorant.variable}
+        ${allura.variable}
       `}
     >
         {children}

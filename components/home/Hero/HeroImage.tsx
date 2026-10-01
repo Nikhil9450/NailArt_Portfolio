@@ -29,7 +29,7 @@ export default function HeroImage({
         width={500}
         height={650}
         priority
-        className="rounded-[40px] shadow-2xl"
+        className="rounded-[40px] "
       />
 
       {/* Rating Card */}
