@@ -11,11 +11,11 @@ export const heroData = {
 
   stats: [
     {
-      number: "500+",
+      number: "120+",
       label: "Happy Clients",
     },
     {
-      number: "2000+",
+      number: "100+",
       label: "Designs",
     },
     {

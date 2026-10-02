@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import HeroStats from "./HeroStats";
 import { Settings } from "@/types/settings";
 import { Badge } from "@/components/ui/badge";
+import { Calendar } from "lucide-react";
 interface HeroContentProps {
   settings: Settings;
 }
@@ -25,7 +26,7 @@ export default function HeroContent({
         ✨ Luxury Nail Artist
       </span> */}
 
-<div className="text-center lg:text-left">
+<div className="text-center lg:text-left ">
 
   {/* Mobile Logo */}
   {/* <div className="mb-6 flex justify-center lg:hidden">
@@ -40,7 +41,7 @@ export default function HeroContent({
 
   {/* Badge */}
   <div className="flex justify-start lg:justify-start">
-         <span className="rounded-full bg-theme-secondary px-4 py-1 text-[8px] font-normal text-theme-primary">
+         <span className="rounded-full bg-theme-secondary px-4 py-1 text-[8px] font-normal lg:text-sm text-theme-primary">
         ✨ Luxury Nail Artist
       </span>
   </div>
@@ -83,6 +84,7 @@ export default function HeroContent({
       sm:text-lg
       lg:mx-0
       lg:mt-4
+      lg:text-4xl
       lg:text-left
       font-cursive 
     "
@@ -91,7 +93,7 @@ export default function HeroContent({
   </p>
 
 </div>
-      <p className="mt-6 max-w-lg text-[9px] text-theme-primary">
+      <p className="mt-6 max-w-lg text-[9px] lg:text-sm text-theme-primary">
         
           "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."
       </p>
@@ -99,22 +101,27 @@ export default function HeroContent({
 <div className="mt-8 flex justify-start flex-col gap-3 lg:justify-start lg:flex-row">
   <Link href="/booking">
     <Button
-      className="h-8  px-5 w-40 text-[10px]  sm:px-6 lg:h-12 lg:px-8 rounded-theme"
+      className="h-8  px-5 w-40 text-[10px]  sm:px-6 lg:h-12 lg:px-8 lg:text-sm rounded-theme"
     >
+     <Calendar className="!size-3" />
+      <span className="ml-1">
       Book Appointment
+      </span>
     </Button>
   </Link>
 
   <Link href="/portfolio">
     <Button
       variant="outline"
-      className="h-8  px-5 w-40 text-[10px] bg-theme-secondary  sm:px-6 lg:h-12 lg:px-8 rounded-theme"
+      className="h-8  px-5 w-40 text-[10px] bg-theme-secondary  sm:px-6 lg:h-12 lg:px-8 lg:text-sm rounded-theme"
     >
       View Portfolio
     </Button>
   </Link>
 </div>
-
+<div className="hidden lg:block">
+  <HeroStats />
+</div>
       {/* <HeroStats /> */}
     </motion.div>
   );

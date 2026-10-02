@@ -18,7 +18,7 @@ export default async function WebsiteLayout({
       <ThemeProvider settings={settings}>
         <Navbar />
         {children}
-        <FloatingBooking />
+        {/* <FloatingBooking /> */}
         <Footer />
       </ThemeProvider>
      </WebsiteSettingsProvider>

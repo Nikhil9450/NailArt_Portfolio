@@ -30,6 +30,7 @@ export default async function Hero() {
               md:gap-8
               lg:grid-cols-2
               lg:gap-16
+              lg:items-start
             "
           >
             {/* LEFT */}
@@ -44,7 +45,9 @@ export default async function Hero() {
           </div>
 
           {/* Stats BELOW both */}
-          <HeroStats />
+          <div className="block lg:hidden">
+            <HeroStats />
+          </div>
 
         </div>
       </Container>
