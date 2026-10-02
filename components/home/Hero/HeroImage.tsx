@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import FloatingCard from "@/components/common/FloatingCard";
-import { Star, Users } from "lucide-react";
 import { Settings } from "@/types/settings";
 
 interface HeroImageProps {
@@ -18,43 +16,45 @@ export default function HeroImage({
       initial={{ opacity: 0, x: 60 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
-      className="relative flex justify-center"
+      className="
+        relative
+        flex
+        items-center
+        justify-center
+        lg:justify-end
+      "
     >
-      {/* Background Glow */}
-      <div className="absolute -z-10 h-96 w-96 rounded-full bg-pink-200/30 blur-3xl" />
+      {/* Theme-colored glow */}
+      <div
+        className="
+          absolute
+          h-[350px]
+          w-[350px]
+          rounded-full
+          bg-[var(--theme-primary)]
+          opacity-20
+          blur-3xl
+          lg:h-[500px]
+          lg:w-[500px]
+        "
+      />
 
       <Image
         src={settings.heroImage || "/images/hero/hero.png"}
         alt="Luxury Nail Art"
-        width={500}
-        height={650}
+        width={600}
+        height={700}
         priority
-        className="rounded-[40px] "
+        className="
+          relative
+          z-10
+          h-auto
+          w-full
+          max-w-[550px]
+          object-contain
+          rounded-b-[80px]
+        "
       />
-
-      {/* Rating Card */}
-      {/* <FloatingCard className="absolute -left-10 top-12 hidden md:block">
-        <div className="flex items-center gap-3">
-          <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-          <div>
-            <h4 className="font-bold">4.9 Rating</h4>
-            <p className="text-sm text-gray-500">200+ Reviews</p>
-          </div>
-        </div>
-      </FloatingCard> */}
-
-      {/* Client Card */}
-      {/* <FloatingCard className="absolute -right-10 bottom-16 hidden md:block">
-        <div className="flex items-center gap-3">
-          <Users className="h-5 w-5 text-pink-500" />
-          <div>
-            <h4 className="font-bold">500+ Clients</h4>
-            <p className="text-sm text-gray-500">
-              Trusted Every Month
-            </p>
-          </div>
-        </div>
-      </FloatingCard> */}
     </motion.div>
   );
 }

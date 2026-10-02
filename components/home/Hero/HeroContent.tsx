@@ -40,7 +40,7 @@ export default function HeroContent({
 
   {/* Badge */}
   <div className="flex justify-start lg:justify-start">
-         <span className="rounded-full bg-theme-secondary px-4 py-1 text-sm font-medium text-theme-primary">
+         <span className="rounded-full bg-theme-secondary px-4 py-1 text-[8px] font-normal text-theme-primary">
         ✨ Luxury Nail Artist
       </span>
   </div>
@@ -48,9 +48,9 @@ export default function HeroContent({
   {/* Heading */}
   <h1
     className="
-      mt-3
+      mt-1
       text-left
-      text-3xl
+      text-4xl
       font-bold
       leading-tight
       w-[250px]
@@ -75,11 +75,11 @@ export default function HeroContent({
     className="
       mx-auto
       mt-1
-      text-[25px]
+      text-[15px]
       max-w-xl
       text-left
       text-base
-      text-theme-muted
+      text-theme-primary
       sm:text-lg
       lg:mx-0
       lg:mt-4
@@ -91,15 +91,15 @@ export default function HeroContent({
   </p>
 
 </div>
-      {/* <p className="mt-6 max-w-lg text-lg text-theme-muted">
-        {settings.heroSubtitle ||
-          "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."}
-      </p> */}
+      <p className="mt-6 max-w-lg text-[9px] text-theme-primary">
+        
+          "Beautiful nail art crafted with creativity, elegance, and attention to every detail. Your nails deserve to stand out."
+      </p>
 
-<div className="mt-8 flex justify-start gap-3 lg:justify-start">
+<div className="mt-8 flex justify-start flex-col gap-3 lg:justify-start lg:flex-row">
   <Link href="/booking">
     <Button
-      className="h-10 px-5 text-sm sm:h-9 sm:px-6 lg:h-12 lg:px-8 rounded-theme"
+      className="h-8  px-5 w-40 text-[10px]  sm:px-6 lg:h-12 lg:px-8 rounded-theme"
     >
       Book Appointment
     </Button>
@@ -108,14 +108,14 @@ export default function HeroContent({
   <Link href="/portfolio">
     <Button
       variant="outline"
-      className="h-10 px-5 text-sm sm:h-9 sm:px-4 lg:h-12 lg:px-8 rounded-theme"
+      className="h-8  px-5 w-40 text-[10px] bg-theme-secondary  sm:px-6 lg:h-12 lg:px-8 rounded-theme"
     >
       View Portfolio
     </Button>
   </Link>
 </div>
 
-      <HeroStats />
+      {/* <HeroStats /> */}
     </motion.div>
   );
 }
