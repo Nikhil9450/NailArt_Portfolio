@@ -83,10 +83,6 @@ export default function Navbar() {
               {/* Header */}
               <div className="border-b p-6">
                 <Logo />
-
-                <p className="mt-2 text-sm text-gray-500">
-                  Luxury Nail Studio
-                </p>
               </div>
 
               {/* Menu */}

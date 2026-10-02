@@ -17,7 +17,7 @@ export default function GalleryFilter({
     <button
       key={category}
       onClick={() => onCategoryChange(category)}
-      className={`rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 border-theme-hover ${
+      className={`rounded-full px-6 text-xs h-8 flex items-center justify-center py-3 lg:text-sm font-medium transition-all duration-300 border-theme-hover ${
         activeCategory === category
           ? "bg-theme text-white shadow-lg"
           : "border border-gray-200 bg-white hover:bg-theme"
