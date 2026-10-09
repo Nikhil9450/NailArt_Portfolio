@@ -31,7 +31,7 @@ export default async function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate overflow-hidden bg-theme-surface"
+      className="relative isolate overflow-hidden bg-theme-surface min-h-[100vh]"
     >
       <HeroDecorations />
 
@@ -54,7 +54,7 @@ export default async function Hero() {
           </div>
 
           {/* Brand statement */}
-          <div className="relative mx-auto mt-14 max-w-3xl text-center sm:mt-16 lg:mt-20">
+          <div className="relative mx-auto mt-5 max-w-3xl text-center sm:mt-16 lg:mt-20">
             <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-primary sm:text-xs">
               Your Nails, Your Canvas
             </span>
@@ -65,14 +65,14 @@ export default async function Hero() {
                 You.
               </span>
             </h2>
-
+{/* 
             <div className="mx-auto mt-4 flex items-center justify-center gap-2 text-theme-primary">
               <span className="h-px w-10 bg-theme-primary/40" />
               <Sparkles className="h-4 w-4" />
               <span className="h-px w-10 bg-theme-primary/40" />
-            </div>
+            </div> */}
 
-            <p className="mx-auto mt-4 max-w-2xl px-2 text-sm leading-6 text-theme-muted sm:text-base sm:leading-7">
+            <p className="mx-auto mt-2 max-w-2xl px-2 text-xs leading-6 text-theme-muted sm:text-base sm:leading-7">
               Personalized nail designs crafted with passion, precision,
               and creativity — because every detail tells your story.
             </p>
