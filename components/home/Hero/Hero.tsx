@@ -59,7 +59,7 @@ export default async function Hero() {
               Your Nails, Your Canvas
             </span>
 
-            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-theme-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="mt-0 text-3xl font-semibold leading-tight tracking-tight text-theme-foreground sm:text-4xl lg:text-5xl">
               Artistry. Elegance.{" "}
               <span className="font-cursive text-theme-primary">
                 You.
@@ -72,14 +72,14 @@ export default async function Hero() {
               <span className="h-px w-10 bg-theme-primary/40" />
             </div> */}
 
-            <p className="mx-auto mt-2 max-w-2xl px-2 text-xs leading-6 text-theme-muted sm:text-base sm:leading-7">
+            <p className="mx-auto mt-2 max-w-2xl px-2 text-xs leading-6 text-theme-muted sm:text-base sm:leading-7 ">
               Personalized nail designs crafted with passion, precision,
               and creativity — because every detail tells your story.
             </p>
           </div>
 
           {/* Featured services */}
-          <div className="mx-auto mt-8 grid max-w-4xl grid-cols-3 gap-2 pb-4 sm:mt-10 sm:gap-6 lg:mt-12">
+          <div className="mx-auto mt-4 grid max-w-4xl grid-cols-3 gap-2 pb-4 sm:mt-10 sm:gap-6 lg:mt-12">
             {services.map((service) => {
               const Icon = service.icon;
 
